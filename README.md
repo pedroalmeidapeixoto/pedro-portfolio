@@ -1,3 +1,6 @@
+![Capa do Projeto](docs/cover.png)
+
+
 # Pedro Henrique Peixoto — Portfolio
 
 > Personal portfolio and developer showcase built with **React and Vite**, designed to present my experience, technical skills, projects, and ongoing development journey.
