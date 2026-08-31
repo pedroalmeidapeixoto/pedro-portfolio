@@ -90,7 +90,7 @@ function ProjectCard({
         <div className="project-head">
           <div>
             <span className="project-number">
-              {number} / CASE STUDY
+              {number} / {t.case_study}
             </span>
 
             <h3>{title}</h3>
@@ -257,7 +257,7 @@ export default function Projects({ t }) {
           tags={medTags}
           specs={[
             [t.spec_arch, 'Multi-tenant'],
-            ['Auth', 'JWT + RBAC'],
+            [t.spec_auth, 'JWT + RBAC'],
             [
               t.spec_encryption,
               'AES-256-GCM',
@@ -317,27 +317,27 @@ export default function Projects({ t }) {
         <ProjectCard
           number="02"
           title="Library Management API"
-          badge="Backend project"
-          description="REST API for managing users, books, physical copies and loans, built with Java and Spring Boot with PostgreSQL persistence and database-side business logic."
+          badge={t.project_backend_badge}
+          description={t.proj_library_desc}
           t={t}
-          problem="Model library operations with clear relationships between users, books, physical copies and loans while enforcing business rules."
-          solution="A layered Spring Boot API with JPA/Hibernate persistence, PostgreSQL procedures for loan return and fine calculation, validation and automated tests."
+          problem={t.proj_library_problem}
+          solution={t.proj_library_solution}
           tags={libraryTags}
           specs={[
             [
               t.spec_arch,
-              'Layered architecture',
+              t.spec_layered,
             ],
             [
-              'Persistence',
+              t.spec_persistence,
               'JPA / Hibernate',
             ],
             [
-              'Database logic',
+              t.spec_database_logic,
               'PL/pgSQL',
             ],
           ]}
-          details="Java 17 and Spring Boot 3.3.2 backend using JPA/Hibernate and PostgreSQL. The project separates controller, service, repository, DTO and entity responsibilities, and uses PL/pgSQL for database-side loan-return and fine-calculation logic. Validation and tests cover core API behavior."
+          details={t.proj_library_details}
           github="https://github.com/pedroalmeidapeixoto/library-management-api"
           terminal={commonTerminal(
             'library-api',
