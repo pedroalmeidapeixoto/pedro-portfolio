@@ -27,4 +27,30 @@ export default function Header({ t, lang, setLang, onNavigate }) {
   </header>;
 }
 
-function LanguageSwitch({lang,setLang}) { return <div className="lang-switch"><button className={`lang-btn ${lang==='en'?'active':''}`} onClick={()=>setLang('en')}>EN</button><button className={`lang-btn ${lang==='pt'?'active':''}`} onClick={()=>setLang('pt')}>PT</button></div>; }
+function LanguageSwitch({ lang, setLang }) {
+  return (
+    <div
+      className="lang-switch"
+      role="group"
+      aria-label="Language selection"
+    >
+      <button
+        type="button"
+        className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+        onClick={() => setLang('en')}
+        aria-pressed={lang === 'en'}
+      >
+        EN
+      </button>
+
+      <button
+        type="button"
+        className={`lang-btn ${lang === 'pt' ? 'active' : ''}`}
+        onClick={() => setLang('pt')}
+        aria-pressed={lang === 'pt'}
+      >
+        PT
+      </button>
+    </div>
+  );
+}
