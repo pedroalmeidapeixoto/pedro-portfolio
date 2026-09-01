@@ -1,4 +1,5 @@
 import React from 'react';
+import profilePhoto from '../../docs/profile-photo.png';
 
 const icons = {
   CSharp: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg',
@@ -54,7 +55,7 @@ export default function Hero({ t, onNavigate }) {
 
         <div className="hero-visual reveal reveal-delay">
           <div className="photo-frame">
-            <img src="/docs/profile-photo.png" alt={t.about_photo_alt} />
+            <img src={profilePhoto} alt={t.about_photo_alt} /> 
             <span className="photo-corner photo-corner-a" />
             <span className="photo-corner photo-corner-b" />
           </div>
