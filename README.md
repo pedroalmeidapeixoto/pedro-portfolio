@@ -1,26 +1,36 @@
+
+![Capa do Projeto](docs/cover.png)
+
 # Pedro Henrique Peixoto — Portfolio
 
-Personal portfolio built with **React + Vite**, preserving the original visual language while moving the interface into reusable components.
+Personal portfolio built with React + Vite, featuring a real-time infrastructure panel powered by a Vercel Serverless API, PostgreSQL/Supabase and GitHub API integration.
 
-## Stack
+The portfolio goes beyond a static presentation: the infrastructure panel consumes real API endpoints, executes database operations and displays live request activity.
+
+## Tech Stack
+
 - React
 - Vite
 - JavaScript
-- CSS
+- Node.js
+- Vercel Serverless Functions
+- PostgreSQL
+- Supabase
+- GitHub API
 
-## Structure
-- `src/components/` — page sections and reusable UI
-- `src/data/` — translations/content
-- `src/assets/` — local assets
-- `src/App.jsx` — application composition and global interactions
+## Project Structure
 
-## Projects
-1. MedRecord
-2. Library Management API
-3. C# / .NET project — planned
-
-## Run
-```bash
-npm install
-npm run dev
-```
+```text
+pedro-portfolio/
+├── api/
+│   ├── activity.js
+│   ├── github.js
+│   ├── health.js
+│   └── projects.js
+├── db/
+│   └── schema.sql
+├── public/
+├── src/
+├── index.html
+├── package.json
+└── vite.config.js

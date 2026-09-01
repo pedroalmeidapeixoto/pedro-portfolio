@@ -1,2 +1,91 @@
 import React from 'react';
-export default function Contact({t}) { const [copied,setCopied]=React.useState(false); const [sending,setSending]=React.useState(false); const [note,setNote]=React.useState(t.form_note); React.useEffect(()=>{if(!sending)setNote(t.form_note)},[t,sending]); const copy=async()=>{try{await navigator.clipboard.writeText('almeidapeixotopedro@gmail.com');setCopied(true);setTimeout(()=>setCopied(false),2000)}catch{}}; const submit=e=>{e.preventDefault();const f=new FormData(e.currentTarget),name=String(f.get('fname')).trim(),email=String(f.get('femail')).trim(),msg=String(f.get('fmsg')).trim();if(!name||!email||!msg)return;setSending(true);let i=0;const tick=()=>{setNote(t.running_step(i+1,t.submit_steps.length));if(i<t.submit_steps.length-1){i++;setTimeout(tick,500)}else setTimeout(()=>{location.href=`mailto:almeidapeixotopedro@gmail.com?subject=${encodeURIComponent(t.mail_subject(name))}&body=${encodeURIComponent(`${msg}\n\n— ${name} (${email})`)}`;setSending(false);setNote(t.form_note)},500)};tick()}; return <section id="contato"><div className="wrap"><div className="sec-heading reveal"><span className="sec-eyebrow">{t.contact_eyebrow}</span><h2>{t.contact_title}</h2><p className="section-intro">{t.contact_intro}</p></div><div className="contact-grid"><div className="contact-panel glass-panel reveal"><div className="contact-intro-card"><span className="panel-label">/contact</span><strong>{t.contact_card_title}</strong></div><a className="contact-row" href="mailto:almeidapeixotopedro@gmail.com"><span className="contact-key">"email"</span><span className="contact-val">almeidapeixotopedro@gmail.com</span></a><button type="button" className="contact-row" onClick={copy}><span className="contact-key">{t.contact_copy_key}</span><span className="contact-val">{copied?t.copy_done:t.copy_default}</span></button><a className="contact-row" href="https://linkedin.com/in/pedroalmeidapeixoto" target="_blank" rel="noopener"><span className="contact-key">"linkedin"</span><span className="contact-val">/in/pedroalmeidapeixoto ↗</span></a><a className="contact-row" href="https://github.com/pedroalmeidapeixoto" target="_blank" rel="noopener"><span className="contact-key">"github"</span><span className="contact-val">/pedroalmeidapeixoto ↗</span></a></div><form className="form-panel glass-panel reveal reveal-delay" onSubmit={submit}><label htmlFor="fname">{t.form_name_label}</label><input id="fname" name="fname" type="text" autoComplete="name" placeholder={t.form_name_ph} required/><label htmlFor="femail">{t.form_email_label}</label><input id="femail" name="femail" type="email" autoComplete="email" placeholder={t.form_email_ph} required/><label htmlFor="fmsg">{t.form_msg_label}</label><textarea id="fmsg" name="fmsg" rows="5" placeholder={t.form_msg_ph} required></textarea><button type="submit" className="btn btn-primary" disabled={sending}>{sending?t.submit_steps[Math.min(3,Math.floor((Date.now()%3000)/750))]:t.form_submit}</button><p className="form-note">{note}</p></form></div></div></section>; }
+
+const links = [
+  { key: 'whatsapp', label: 'WhatsApp', href: 'https://wa.me/5583986590715', icon: 'whatsapp' },
+  { key: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/pedroalmeidapeixoto/', icon: 'linkedin' },
+  { key: 'github', label: 'GitHub', href: 'https://github.com/pedroalmeidapeixoto', icon: 'github' },
+  { key: 'phone', label: 'Telefone', href: 'tel:+5583986590715', icon: 'phone' }
+];
+
+export default function Contact({ t }) {
+  const submit = (e) => {
+    e.preventDefault();
+    const f = new FormData(e.currentTarget);
+    const body = `Nome: ${f.get('name')}\nContato: ${f.get('contact')}\n\n${f.get('message')}`;
+    window.location.href = `mailto:${t.email}?subject=${encodeURIComponent('Contato via portfólio — ' + f.get('name'))}&body=${encodeURIComponent(body)}`;
+  };
+
+  const resume = t.resume_file;
+
+  return (
+    <section id="contato" className="contact-section">
+      <div className="wrap">
+        <div className="section-head reveal">
+          <span>{t.contact_eyebrow}</span>
+          <h2>{t.contact_title}</h2>
+          <p>{t.contact_intro}</p>
+        </div>
+
+        <div className="contact-grid">
+          <div className="contact-info reveal">
+            <div className="email-card">
+              <small>E-MAIL</small>
+              <strong>{t.email}</strong>
+              <a href={`mailto:${t.email}`}>{t.send_email} ↗</a>
+            </div>
+
+            <div className="contact-links">
+              {links.map((item) => (
+                <a
+                  key={item.key}
+                  href={item.href}
+                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                  rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+                >
+                  <span className="contact-link-main">
+                    <ContactIcon type={item.icon} />
+                    <span>{item.label}</span>
+                  </span>
+                  <span>↗</span>
+                </a>
+              ))}
+            </div>
+
+            <div className="resume-download">
+              <div>
+                <small>{t.resume_label}</small>
+                <strong>{t.resume_title}</strong>
+                <span>{t.resume_subtitle}</span>
+              </div>
+              <div className="resume-actions">
+                <a href={resume.pt} target="_blank" rel="noreferrer">{t.resume_pt} ↓</a>
+                <a href={resume.en} target="_blank" rel="noreferrer">{t.resume_en} ↓</a>
+              </div>
+            </div>
+          </div>
+
+          <form className="contact-form reveal reveal-delay" onSubmit={submit}>
+            <label>{t.form_name}<input name="name" required placeholder={t.form_name_ph}/></label>
+            <label>{t.form_contact}<input name="contact" required placeholder={t.form_contact_ph}/></label>
+            <label>{t.form_message}<textarea name="message" rows="6" required placeholder={t.form_message_ph}/></label>
+            <button className="btn primary contact-submit" type="submit">
+              <span>{t.form_submit}</span><span>→</span>
+            </button>
+            <p>{t.form_note}</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactIcon({ type }) {
+  const paths = {
+    mail: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></>,
+    whatsapp: <><path d="M20.2 11.1a8.2 8.2 0 0 1-12.1 7.1L4 19l.9-4A8.2 8.2 0 1 1 20.2 11.1Z"/><path d="M8.7 8.5c.2-.5.4-.5.8-.5h.5c.2 0 .4.1.5.4l.8 1.8c.1.3.1.5-.1.7l-.5.6c.5 1 1.3 1.8 2.4 2.3l.7-.6c.2-.2.4-.2.7-.1l1.7.8c.3.1.4.3.4.6v.4c0 .4-.1.6-.5.8-.4.2-1.3.4-2.1.1-1.4-.4-2.8-1.2-4-2.4-1.1-1.1-2-2.5-2.3-3.8-.2-.8 0-1.7.3-2.1Z"/></>,
+    linkedin: <><path d="M6 8v10"/><path d="M6 5.2v.1"/><path d="M10 18v-6a3 3 0 0 1 6 0v6"/><path d="M10 11v7"/></>,
+    github: <><path d="M15 22v-3.2c.1-.9-.3-1.5-.8-1.8 2.7-.3 5.5-1.3 5.5-5.9 0-1.3-.5-2.4-1.2-3.2.1-.3.5-1.5-.1-3.1 0 0-1-.3-3.3 1.2a11.5 11.5 0 0 0-6 0C6.8 4.5 5.8 4.8 5.8 4.8c-.6 1.6-.2 2.8-.1 3.1-.8.8-1.2 1.9-1.2 3.2 0 4.6 2.8 5.6 5.5 5.9-.4.3-.7.8-.8 1.5V22"/><path d="M7 18c-2 .9-2.5-1-3.5-1.2"/></>,
+    phone: <><path d="M7 3h3l1.5 4-2 1.4a13 13 0 0 0 6.1 6.1l1.4-2 4 1.5v3c0 1-1 2-2 2C11.3 19 5 12.7 5 5c0-1 1-2 2-2Z"/></>
+  };
+  return <svg className="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[type]}</svg>;
+}
