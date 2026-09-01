@@ -1,5 +1,5 @@
 
-![Capa do Projeto](cover.png)
+![Capa do Projeto](docs/cover.png)
 
 # Pedro Henrique Peixoto — Portfolio
 
