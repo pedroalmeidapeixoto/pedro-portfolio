@@ -1,0 +1,2 @@
+import React from 'react';
+export default function Footer({ t }) { return <footer><div className="wrap footer"><div><strong>Pedro Henrique Peixoto</strong><span>{t.footer_role}</span></div><div className="footer-links"><a href="#hero">{t.nav_home}</a><a href="#sobre">{t.nav_about}</a><a href="#experiencia">{t.nav_experience}</a><a href="#projetos">{t.nav_projects}</a><a href="#skills">{t.nav_skills}</a></div><small>{t.footer_copy}</small></div></footer>; }

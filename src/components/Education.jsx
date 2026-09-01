@@ -1,0 +1,2 @@
+import React from 'react';
+export default function Education({ t }) { return <section id="formacao"><div className="wrap"><div className="section-head reveal"><span>{t.education_eyebrow}</span><h2>{t.education_title}</h2></div><div className="education-list">{t.education.map(([year,title,org],i)=><div className="education-item reveal" key={title}><span>{year}</span><div><h3>{title}</h3><p>{org}</p></div></div>)}</div></div></section>; }
