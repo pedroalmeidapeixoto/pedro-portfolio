@@ -6,7 +6,6 @@ import About from './components/About';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
-import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { translations } from './data/translations';
@@ -58,7 +57,6 @@ export default function App() {
         <Experience t={t} />
         <Projects t={t} />
         <Skills t={t} />
-        <Education t={t} />
         <Contact t={t} />
       </main>
       <Footer t={t} />

@@ -2,7 +2,7 @@ import React from 'react';
 
 const items = [
   ['hero', 'nav_home'], ['sobre', 'nav_about'], ['experiencia', 'nav_experience'],
-  ['projetos', 'nav_projects'], ['skills', 'nav_skills'], ['formacao', 'nav_education'], ['contato', 'nav_contact']
+  ['projetos', 'nav_projects'], ['skills', 'nav_skills'], ['contato', 'nav_contact']
 ];
 
 const contacts = [
