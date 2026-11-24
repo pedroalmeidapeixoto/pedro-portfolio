@@ -226,14 +226,15 @@ const translations = {
         badge: 'Portal · Parte técnica',
         desc:
           'Portal de notícias de Brasília, Goiás e Entorno, no ar há 22 anos segundo o próprio site.',
-        caseLabels: ['Meu papel', 'O portal'],
-        problem: 'Cuido da parte técnica do portal. A gestão das publicações não é comigo.',
+        caseLabels: ['Meu papel', 'Por baixo do capô'],
+        problem:
+          'Cuido da parte técnica do portal, a plataforma em que as notícias são publicadas. A gestão das publicações não é comigo.',
         solution:
-          'Notícias de Brasília, Brasil, Goiás e Entorno, política, concursos, economia, variedades e blogs, em um site WordPress.',
-        tags: ['WordPress', 'Notícias', 'Parte técnica'],
+          'WordPress com o tema Newspaper (com tema filho), plugin de anúncios AdRotate, Google Site Kit, dados estruturados, Open Graph, URL canônica e feed RSS.',
+        tags: ['WordPress', 'Tema Newspaper', 'AdRotate', 'Site Kit', 'SEO técnico'],
         live: 'https://portaldocallado.com.br/',
         detail:
-          'Site de notícias em WordPress com as editorias Brasil, Brasília, Goiás & Entorno, Política, Concursos, Economia, Variedades, Blogs, Eleições e Carta do Leitor. Não foi desenvolvido por mim: eu cuido da parte técnica, não da gestão das publicações.'
+          'Site de notícias em WordPress 7.1 com o tema Newspaper (tagDiv) e um tema filho, anúncios gerenciados pelo AdRotate e métricas pelo Google Site Kit. Para busca e compartilhamento, tem dados estruturados (JSON-LD), Open Graph, URL canônica e feed RSS, em layout responsivo. As editorias são Brasil, Brasília, Goiás & Entorno, Política, Concursos, Economia, Variedades, Blogs, Eleições e Carta do Leitor. O portal não foi desenvolvido por mim: eu cuido da parte técnica, não da gestão das publicações.'
       },
       {
         name: 'Infforma',
@@ -241,14 +242,15 @@ const translations = {
         badge: 'Portal · Parte técnica',
         desc:
           'Portal de notícias de Brasília e do Brasil: política, economia, cidades, cultura, tecnologia e os principais acontecimentos do dia.',
-        caseLabels: ['Meu papel', 'O portal'],
-        problem: 'Cuido da parte técnica do portal. A gestão das publicações não é comigo.',
+        caseLabels: ['Meu papel', 'Por baixo do capô'],
+        problem:
+          'Cuido da parte técnica do portal, a plataforma em que as notícias são publicadas. A gestão das publicações não é comigo.',
         solution:
-          'Editorias de Brasília, Goiás e Entorno, Política, Opinião, Brasil, Universo Feminino e Variedades, em um site WordPress.',
-        tags: ['WordPress', 'Notícias', 'Parte técnica'],
+          'WordPress com o tema Newspaper, Google Site Kit, dados estruturados, Open Graph, URL canônica e feed RSS, em layout responsivo.',
+        tags: ['WordPress', 'Tema Newspaper', 'Site Kit', 'SEO técnico', 'RSS'],
         live: 'https://infformadf.com.br/',
         detail:
-          'Site de notícias em WordPress com as editorias Brasília, GO & Entorno, Política, Opinião, Brasil, Universo Feminino e Variedades. Não foi desenvolvido por mim: eu cuido da parte técnica, não da gestão das publicações.'
+          'Site de notícias em WordPress 7.1 com o tema Newspaper (tagDiv) e métricas pelo Google Site Kit. Para busca e compartilhamento, tem dados estruturados (JSON-LD), Open Graph, URL canônica e feed RSS, em layout responsivo. As editorias são Brasília, GO & Entorno, Política, Opinião, Brasil, Universo Feminino e Variedades. O portal não foi desenvolvido por mim: eu cuido da parte técnica, não da gestão das publicações.'
       }
     ],
 
@@ -577,24 +579,28 @@ translations.en = {
       badge: 'Portal · Technical side',
       desc:
         'News portal for Brasília, Goiás and the surrounding area, online for 22 years according to the site itself.',
-      caseLabels: ['My role', 'The portal'],
-      problem: 'I take care of the technical side of the portal. Managing the posts is not my job.',
+      caseLabels: ['My role', 'Under the hood'],
+      tags: ['WordPress', 'Newspaper theme', 'AdRotate', 'Site Kit', 'Technical SEO'],
+      problem:
+        'I take care of the technical side of the portal, the platform the news is published on. Managing the posts is not my job.',
       solution:
-        'News from Brasília, Brazil, Goiás and the surrounding area, politics, public exams, economy, lifestyle and blogs, on a WordPress site.',
+        'WordPress with the Newspaper theme (plus a child theme), the AdRotate ad plugin, Google Site Kit, structured data, Open Graph, canonical URLs and an RSS feed.',
       detail:
-        'WordPress news site with the sections Brasil, Brasília, Goiás & Entorno, Política, Concursos, Economia, Variedades, Blogs, Eleições and Carta do Leitor. I did not build it: I take care of the technical side, not of managing the posts.'
+        'WordPress 7.1 news site with the Newspaper theme (tagDiv) and a child theme, ads managed by AdRotate and metrics through Google Site Kit. For search and sharing it has structured data (JSON-LD), Open Graph, canonical URLs and an RSS feed, in a responsive layout. Sections: Brasil, Brasília, Goiás & Entorno, Política, Concursos, Economia, Variedades, Blogs, Eleições and Carta do Leitor. I did not build the portal: I take care of the technical side, not of managing the posts.'
     },
     {
       ...translations.pt.projects[5],
       badge: 'Portal · Technical side',
       desc:
         'News portal for Brasília and Brazil: politics, economy, cities, culture, technology and the main events of the day.',
-      caseLabels: ['My role', 'The portal'],
-      problem: 'I take care of the technical side of the portal. Managing the posts is not my job.',
+      caseLabels: ['My role', 'Under the hood'],
+      tags: ['WordPress', 'Newspaper theme', 'Site Kit', 'Technical SEO', 'RSS'],
+      problem:
+        'I take care of the technical side of the portal, the platform the news is published on. Managing the posts is not my job.',
       solution:
-        "Sections for Brasília, Goiás and the surrounding area, Politics, Opinion, Brazil, Women's Universe and Lifestyle, on a WordPress site.",
+        'WordPress with the Newspaper theme, Google Site Kit, structured data, Open Graph, canonical URLs and an RSS feed, in a responsive layout.',
       detail:
-        'WordPress news site with the sections Brasília, GO & Entorno, Política, Opinião, Brasil, Universo Feminino and Variedades. I did not build it: I take care of the technical side, not of managing the posts.'
+        'WordPress 7.1 news site with the Newspaper theme (tagDiv) and metrics through Google Site Kit. For search and sharing it has structured data (JSON-LD), Open Graph, canonical URLs and an RSS feed, in a responsive layout. Sections: Brasília, GO & Entorno, Política, Opinião, Brasil, Universo Feminino and Variedades. I did not build the portal: I take care of the technical side, not of managing the posts.'
     }
   ],
 
