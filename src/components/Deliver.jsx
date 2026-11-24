@@ -11,7 +11,7 @@ const icons = {
 
 export default function Deliver({ t }) {
   return (
-    <section id="entrego" className="soft-section">
+    <section id="entrego" className="soft-section block" data-block>
       <div className="wrap">
         <div className="section-head reveal">
           <span>{t.deliver_eyebrow}</span>

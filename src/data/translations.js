@@ -289,6 +289,19 @@ const translations = {
   en: {}
 };
 
+Object.assign(translations.pt, {
+  manifesto_label: 'Como eu trabalho',
+  manifesto: 'Gosto de entender o problema por completo antes de escolher a tecnologia.',
+  journey_eyebrow: 'Como uma API funciona',
+  journey_title: 'Uma requisição, de ponta a ponta.',
+  journey_steps: [
+    ['Cliente', 'A requisição sai do navegador ou do app, com método, rota e dados.'],
+    ['API', 'A rota recebe, valida os dados e confere autenticação e permissões.'],
+    ['Serviço', 'As regras de negócio ficam aqui, separadas da camada HTTP.'],
+    ['Banco de dados', 'O PostgreSQL grava os dados e a resposta volta ao cliente com o status certo.']
+  ]
+});
+
 translations.en = {
   ...translations.pt,
 
@@ -542,5 +555,18 @@ translations.en = {
   footer_copy:
     '© 2026 Pedro Henrique Peixoto. All rights reserved.'
 };
+
+Object.assign(translations.en, {
+  manifesto_label: 'How I work',
+  manifesto: 'I like understanding the whole problem before choosing the technology.',
+  journey_eyebrow: 'How an API works',
+  journey_title: 'One request, end to end.',
+  journey_steps: [
+    ['Client', 'The request leaves the browser or the app, with a method, a route and data.'],
+    ['API', 'The route receives it, validates the data and checks authentication and permissions.'],
+    ['Service', 'The business rules live here, apart from the HTTP layer.'],
+    ['Database', 'PostgreSQL stores the data and the response goes back to the client with the right status.']
+  ]
+});
 
 export { translations };

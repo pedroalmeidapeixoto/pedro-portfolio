@@ -162,7 +162,7 @@ export default function Skills({ t }) {
     : (t.architecture_db_not_configured || 'not connected');
 
   return (
-    <section id="skills" className="soft-section">
+    <section id="skills" className="soft-section block" data-block>
       <div className="wrap">
         <div className="section-head reveal">
           <span>{t.skills_eyebrow}</span>

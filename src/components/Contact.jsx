@@ -18,7 +18,7 @@ export default function Contact({ t }) {
   const resume = t.resume_file;
 
   return (
-    <section id="contato" className="contact-section">
+    <section id="contato" className="contact-section block" data-block>
       <div className="wrap">
         <div className="section-head reveal">
           <span>{t.contact_eyebrow}</span>

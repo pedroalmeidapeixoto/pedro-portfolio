@@ -1,5 +1,6 @@
 import React from 'react';
 import profilePhoto from '../../docs/profile-photo.png';
+import Gears from './Gears';
 
 const icons = {
   CSharp: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg',
@@ -24,12 +25,12 @@ const contacts = [
 
 export default function Hero({ t, onNavigate }) {
   return (
-    <section className="hero" id="hero">
+    <section className="hero block block--first" id="hero">
+      <Gears className="hero-gears" />
       <div className="wrap hero-inner">
         <div className="hero-copy reveal">
-          <span className="availability"><i /> {t.availability}</span>
           <span className="eyebrow">BACKEND DEVELOPER · C# / .NET</span>
-          <h1>Pedro Henrique<br /><span>Peixoto.</span></h1>
+          <h1 className="mask-title"><span className="mask"><span style={{ '--d': '80ms' }}>Pedro</span></span><span className="mask"><span style={{ '--d': '180ms' }}>Henrique</span></span><span className="mask"><span className="accent" style={{ '--d': '280ms' }}>Peixoto.</span></span></h1>
           <p className="hero-lede">{t.hero_lede}</p>
           <div className="hero-actions">
             <button className="btn primary" onClick={() => onNavigate('projetos')}>{t.hero_cta_projects} →</button>
@@ -53,7 +54,7 @@ export default function Hero({ t, onNavigate }) {
           </div>
         </div>
 
-        <div className="hero-visual reveal reveal-delay">
+        <div className="hero-visual reveal reveal-delay" data-parallax="-0.06">
           <div className="photo-frame">
             <img src={profilePhoto} alt={t.about_photo_alt} /> 
             <span className="photo-corner photo-corner-a" />
