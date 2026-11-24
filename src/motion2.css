@@ -1,0 +1,254 @@
+/* ==========================================================================
+   Second round of motion: the pinned rail of projects, the typed terminal, headline wipes, gears in the contact block.
+   ========================================================================== */
+
+/* ---------- Headlines wipe up as they come in ---------- */
+.section-head h2 {
+  clip-path: inset(-12% 0 112% 0);
+  transform: translateY(26px);
+  transition:
+    clip-path 1s var(--ease) 0.08s,
+    transform 1s var(--ease) 0.08s;
+}
+.section-head.visible h2,
+.visible .section-head h2 {
+  clip-path: inset(-12% 0 -12% 0);
+  transform: none;
+}
+
+/* ---------- Typed terminal ---------- */
+.about-terminal pre {
+  min-height: 9.6em;
+}
+.caret {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--lime);
+  animation: caret 1s steps(1) infinite;
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ---------- Projects: a flow with a packet inside every card ---------- */
+.flow {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 26px;
+  padding: 16px 0 0;
+  border-top: 1px dashed rgba(94, 234, 212, 0.35);
+}
+.flow span {
+  position: relative;
+  z-index: 1;
+  padding: 6px 12px;
+  background: var(--paper);
+  border: 1px solid rgba(94, 234, 212, 0.4);
+  border-radius: 8px;
+  font: 500 12px var(--mono);
+  color: var(--lime);
+  white-space: nowrap;
+}
+.flow__packet {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 14px rgba(94, 234, 212, 0.9);
+  animation: flow 3.4s cubic-bezier(0.5, 0, 0.3, 1) infinite;
+}
+@keyframes flow {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 10px);
+    opacity: 0;
+  }
+}
+
+/* ---------- Projects: the pinned rail (wide screens) ---------- */
+.rail-hint {
+  margin-top: 26px;
+  font: 500 13px var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.rail-progress {
+  display: none;
+}
+.rail-end {
+  display: block;
+  margin-top: 40px;
+}
+.projects .project-list {
+  display: contents;
+}
+.projects .rail-track {
+  display: grid;
+  gap: 26px;
+  width: min(var(--max), calc(100% - 48px));
+  margin: 0 auto;
+}
+.projects--rail {
+  padding: 0 !important;
+}
+.projects--rail .rail-stage {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  padding-top: 40px;
+}
+.projects--rail .rail-track {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  width: max-content;
+  margin: 0;
+  padding: 0 max(24px, calc((100vw - var(--max)) / 2));
+  transform: translate3d(calc(var(--rail, 0) * -1px), 0, 0);
+  will-change: transform;
+}
+.projects--rail .rail-intro {
+  flex: 0 0 380px;
+}
+.projects--rail .rail-intro .section-head {
+  margin-bottom: 0;
+}
+.projects--rail .project-card {
+  flex: 0 0 min(780px, 62vw);
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 34px 38px;
+  align-self: center;
+}
+.projects--rail .project-top h3 {
+  font-size: clamp(32px, 3.6vw, 50px);
+}
+.projects--rail .project-desc {
+  margin: 16px 0 20px;
+  font-size: 17px;
+}
+.projects--rail .flow {
+  margin-bottom: 18px;
+}
+.projects--rail .case-grid {
+  margin-bottom: 18px;
+}
+.projects--rail .case-grid p {
+  font-size: 15px;
+}
+.projects--rail .details-btn {
+  margin-top: 16px;
+}
+.projects--rail .rail-end {
+  flex: 0 0 280px;
+  margin: 0;
+}
+.projects--rail .rail-progress {
+  position: absolute;
+  left: max(24px, calc((100vw - var(--max)) / 2));
+  right: max(24px, calc((100vw - var(--max)) / 2));
+  bottom: 34px;
+  display: block;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.projects--rail .rail-progress span {
+  display: block;
+  height: 100%;
+  background: var(--lime);
+  box-shadow: 0 0 12px rgba(94, 234, 212, 0.7);
+  transform: scaleX(var(--rp, 0));
+  transform-origin: left;
+}
+
+/* ---------- Contact: gears behind the headline ---------- */
+.contact-section {
+  overflow: hidden;
+}
+.contact-gears {
+  position: absolute;
+  top: 6%;
+  right: -4%;
+  width: min(46vw, 560px);
+  color: var(--lime);
+  opacity: 0.14;
+  pointer-events: none;
+}
+.contact-section .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 960px) {
+  .projects .rail-track {
+    gap: 22px;
+  }
+  .rail-hint {
+    display: none;
+  }
+  .rail-end {
+    margin-top: 10px;
+  }
+  .flow span {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-head h2 {
+    clip-path: none;
+    transform: none;
+    transition: none;
+  }
+  .caret,
+  .flow__packet {
+    animation: none;
+  }
+  .flow__packet {
+    display: none;
+  }
+}
+
+/* a grid cell may shrink below its content (the flow chips must not widen the card on a phone) */
+.projects .rail-track > * {
+  min-width: 0;
+}
+@media (max-width: 960px) {
+  .flow {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+}
+@media (max-width: 640px) {
+  .projects .rail-track {
+    width: calc(100% - 40px);
+  }
+  .email-card strong {
+    font-size: 17px;
+    overflow-wrap: normal;
+  }
+}

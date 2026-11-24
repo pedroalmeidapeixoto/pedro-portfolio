@@ -31,6 +31,7 @@ export default function Skills({ t }) {
   const [lastCheck, setLastCheck] = React.useState(null);
   const [request, setRequest] = React.useState({ method: 'GET', path: '/api/projects', state: 'checking', count: 0 });
   const [activityCount, setActivityCount] = React.useState(0);
+  const [log, setLog] = React.useState([]);
 
   const checkHealth = React.useCallback(async () => {
     const started = performance.now();
@@ -63,7 +64,7 @@ export default function Skills({ t }) {
 
     const execute = async (method, url, options = {}, tone = method.toLowerCase()) => {
       sequence += 1;
-      setRequest((current) => ({ ...current, method, path: url, endpoint: url, tone, state: 'checking', count: current.count + 1 }));
+      setRequest((current) => ({ ...current, method, path: url, endpoint: url, tone, state: 'checking', count: current.count + 1, sequence }));
       const started = performance.now();
 
       try {
@@ -81,9 +82,11 @@ export default function Skills({ t }) {
           state: response.ok ? 'online' : 'offline',
           sequence
         }));
+        setLog((entries) => [{ id: `${Date.now()}-${sequence}`, method, path: data.endpoint || url, code: response.status, ms: clientTime, ok: response.ok, at: new Date() }, ...entries].slice(0, 6));
         await fetchActivity();
         return { response, data };
       } catch {
+        setLog((entries) => [{ id: `${Date.now()}-${sequence}`, method, path: url, code: 'ERR', ms: Math.max(1, Math.round(performance.now() - started)), ok: false, at: new Date() }, ...entries].slice(0, 6));
         setRequest((current) => ({ ...current, method, path: url, endpoint: url, code: 'ERR', message: 'network error', clientTime: Math.max(1, Math.round(performance.now() - started)), state: 'offline', sequence }));
         return { response: null, data: null };
       }
@@ -162,7 +165,7 @@ export default function Skills({ t }) {
     : (t.architecture_db_not_configured || 'not connected');
 
   return (
-    <section id="skills" className="soft-section">
+    <section id="skills" className="soft-section block" data-block>
       <div className="wrap">
         <div className="section-head reveal">
           <span>{t.skills_eyebrow}</span>
@@ -185,36 +188,69 @@ export default function Skills({ t }) {
           ))}
         </div>
 
-        <div className={`architecture reveal ${apiOnline ? 'architecture-online' : ''}`}>
-          <div className="arch-labels"><span>CLIENT</span><span>API</span><span>BACKEND</span><span>DATABASE</span><span>STATUS</span></div>
-          <div className="arch-flow">
-            <b>web / mobile</b><i>→</i><b>REST</b><i>→</i><b>service layer</b><i>→</i><b>PostgreSQL</b>
-            <em className={apiOnline ? 'online' : 'offline'}><span className="status-dot" /> {statusLabel}</em>
+        <div className={`architecture api-client reveal ${apiOnline ? 'architecture-online' : ''}`}>
+          <header className="api-head">
+            <div>
+              <span className="api-kicker">{t.api_kicker}</span>
+              <h3>{t.api_title}</h3>
+              <p>{t.api_intro}</p>
+            </div>
+            <ul className="api-badges">
+              <li className={apiOnline ? 'is-ok' : ''}><span className="status-dot" />API · {statusLabel}</li>
+              <li className={databaseConfigured ? 'is-ok' : ''}><span className="status-dot" />PostgreSQL · {databaseLabel}</li>
+              <li className={githubOnline ? 'is-ok' : ''}><span className="status-dot" />GitHub API · {githubOnline ? t.api_connected : t.api_unavailable}</li>
+            </ul>
+          </header>
+
+          <div className="api-flow" aria-hidden="true">
+            <b>{t.api_flow_client}</b><i>→</i><b>REST</b><i>→</i><b>{t.api_flow_service}</b><i>→</i><b>PostgreSQL</b>
           </div>
 
-          <div className="request-monitor">
-            <div className="request-meta">
-              <span className="live-indicator"><span /> LIVE TRAFFIC</span>
-              <span>REQUEST #{String(request.count).padStart(2, '0')} · REAL CRUD · {activityCount} LOGS</span>
+          <div className="api-grid">
+            <div className="api-now">
+              <div className="request-meta">
+                <span className="live-indicator"><span /> {t.api_live}</span>
+                <span>{t.api_request} #{String(request.count).padStart(2, '0')} · {activityCount} {t.api_logs}</span>
+              </div>
+              <div className="request-route">
+                <strong className={`http-method ${request.tone || 'get'}`}>{request.method}</strong>
+                <code>{request.endpoint || request.path}</code>
+              </div>
+              <div className="request-track"><span className={`request-packet ${request.state}`} /></div>
+              <dl className="api-result">
+                <div><dt>{t.api_status}</dt><dd className={request.state === 'offline' ? 'bad' : 'good'}>{request.code || '—'} <small>{request.message || t.api_waiting}</small></dd></div>
+                <div><dt>{t.api_time}</dt><dd>{request.clientTime ?? '—'}<small> ms</small></dd></div>
+              </dl>
+              <ol className="api-cycle" aria-label={t.api_cycle}>
+                {['GET', 'POST', 'PATCH', 'GET', 'DELETE'].map((method, index) => (
+                  <li key={index} className={(request.sequence || 0) - 1 === index ? 'is-now' : (request.sequence || 0) - 1 > index ? 'is-done' : ''}>{method}</li>
+                ))}
+              </ol>
+              <p className="api-note">{t.api_note}</p>
             </div>
-            <div className="request-route">
-              <strong className={`http-method ${request.tone || 'get'}`}>{request.method}</strong>
-              <code>{request.endpoint || request.path}</code>
-              <span className="request-code">{request.code || '—'}</span>
-              <span className="request-latency">{request.clientTime ?? '—'}ms</span>
-            </div>
-            <div className="request-track"><span className={`request-packet ${request.state}`} /></div>
-          </div>
 
-          <div className="console-lines">
-            <div className="live-line"><span>{'>'}</span> {request.method} {request.endpoint || request.path} {request.code || '—'} {request.message || 'waiting'} · {request.clientTime ?? '—'}ms</div>
-            <div><span>{'>'}</span> GET /api/health {health.status === 'operational' ? '200 OK' : 'checking'} · {health.clientTime ?? health.responseTime ?? '—'}ms</div>
-            <div><span>{'>'}</span> DATABASE PostgreSQL · {databaseLabel}</div>
-            <div><span>{'>'}</span> GITHUB API · {githubOnline ? 'connected' : 'unavailable'}</div>
+            <div className="api-history">
+              <div className="api-history-head"><span>{t.api_history}</span><span>{t.api_history_hint}</span></div>
+              <table>
+                <thead><tr><th>{t.api_col_time}</th><th>{t.api_col_method}</th><th>{t.api_col_route}</th><th>{t.api_col_status}</th><th>ms</th></tr></thead>
+                <tbody>
+                  {log.length === 0 && <tr><td colSpan="5" className="empty">{t.api_waiting}</td></tr>}
+                  {log.map((entry) => (
+                    <tr key={entry.id}>
+                      <td>{entry.at.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</td>
+                      <td><strong className={`http-method ${entry.method.toLowerCase()}`}>{entry.method}</strong></td>
+                      <td><code>{entry.path}</code></td>
+                      <td className={entry.ok ? 'good' : 'bad'}>{entry.code}</td>
+                      <td>{entry.ms}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <div className="health-footer">
-            <span>{t.architecture_live_label || 'LIVE HEALTH CHECK'} · 15s</span>
+            <span>{t.architecture_live_label || 'LIVE HEALTH CHECK'} · 15s · GET /api/health {health.status === 'operational' ? '200 OK' : '…'} · {health.clientTime ?? health.responseTime ?? '—'}ms</span>
             <span>{lastCheck ? `${t.architecture_checked_at || 'checked'} ${lastCheck.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}` : t.architecture_checking || 'checking'}</span>
           </div>
         </div>

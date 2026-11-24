@@ -126,6 +126,13 @@ const translations = {
     solution: 'SOLUÇÃO',
     send_email: 'Enviar e-mail',
 
+    project_cats: {
+      backend: ['Back-end', 'APIs e regras de negócio: o que roda por trás da tela.'],
+      frontend: ['Front-end', 'Sites e interfaces feitos para clientes.'],
+      blogs: ['Portais que mantenho', 'Portais de notícias em WordPress, nos quais atuo na parte técnica.']
+    },
+    project_one: 'projeto',
+    project_many: 'projetos',
     projects_eyebrow: 'Projetos',
     projects_title: 'Onde o desenvolvimento acontece.',
     projects_intro:
@@ -133,12 +140,29 @@ const translations = {
 
     github_cta: 'Ver GitHub ↗',
     project_open: 'Abrir repositório ↗',
+    project_live: 'Abrir o site ↗',
     project_details: 'Ver detalhes',
     project_hide: 'Ocultar detalhes',
 
     projects: [
       {
+        name: 'GymCore',
+        cat: 'backend',
+        badge: 'Backend · C# / .NET',
+        desc:
+          'API de gestão de academias em C# e .NET 10: alunos, personal trainers, planos, matrículas, pagamentos, treinos e avaliações físicas, com três papéis de acesso. Em desenvolvimento.',
+        problem:
+          'Gerir alunos, personais, planos, matrículas e pagamentos de uma academia com regras de negócio consistentes e acesso por papel.',
+        solution:
+          'Entidades de domínio que validam os próprios invariantes, PostgreSQL com índice único parcial para uma matrícula ativa por aluno e casos de uso testados na camada Application.',
+        tags: ['C#', '.NET 10', 'ASP.NET Core', 'EF Core', 'PostgreSQL', 'xUnit'],
+        detail:
+          'Arquitetura em camadas (Api, Application, Domain, Infrastructure) com as 13 entidades da V1 no domínio, persistência com EF Core e seed inicial. Os serviços de alunos, personal trainers, planos e matrículas já têm testes unitários (43 testes). A capa é o painel do administrador do protótipo de front-end (V4), que mostra as três visões: administrador, personal trainer e aluno.',
+        url: 'https://github.com/pedroalmeidapeixoto/GymCore'
+      },
+      {
         name: 'MedRecord',
+        cat: 'backend',
         badge: 'SaaS · Backend',
         desc:
           'Plataforma de prontuário eletrônico multi-tenant para clínicas, com gestão de pacientes, agendamentos, prontuários, RBAC e auditoria.',
@@ -160,6 +184,7 @@ const translations = {
       },
       {
         name: 'Library Management API',
+        cat: 'backend',
         badge: 'Backend · Java',
         desc:
           'API REST para gerenciamento de usuários, livros, exemplares físicos e empréstimos, construída com Java e Spring Boot.',
@@ -178,6 +203,52 @@ const translations = {
         detail:
           'Backend organizado em controller, service, repository, DTO e entity. A lógica de devolução e cálculo de multas utiliza PL/pgSQL no PostgreSQL, com validações e testes para o comportamento principal da API.',
         url: 'https://github.com/pedroalmeidapeixoto/library-management-api'
+      },
+      {
+        name: 'Panificadora Sevylha',
+        cat: 'frontend',
+        badge: 'Site de cliente · Front-end',
+        desc:
+          'Site e pedido por WhatsApp da Panificadora Sevylha, em Campina Grande (PB): o cliente monta o pedido, ou uma ceia de Natal completa, e envia pronto para a loja.',
+        problem:
+          'Deixar o cliente montar o pedido, ou a ceia, pelo celular e entregar à padaria uma mensagem já organizada.',
+        solution:
+          'Cardápio com filtros, gaveta de pedido, montador de ceia e checkout que gera a mensagem do WhatsApp, atrás de uma interface pronta para virar API.',
+        tags: ['React 19', 'TypeScript', 'Vite', 'Vitest', 'Lenis', 'WhatsApp'],
+        // live: the deployed site (the repository is private, so there is no repo link)
+        live: 'https://panificadora-sevylha-site.vercel.app/',
+        detail:
+          'Landing page responsiva em pt-BR com selo de aberto/fechado pelos horários reais, pedido salvo no navegador e montador de ceia para 6 ou 10 pessoas. O envio passa por uma interface OrderGateway (WhatsApp hoje, API depois), a lógica de pedido tem testes unitários e a página tem transições entre seções, rolagem suave e fallback para movimento reduzido.'
+      },
+      {
+        name: 'Portal do Callado',
+        cat: 'blogs',
+        badge: 'Portal · WordPress',
+        desc:
+          'Portal de notícias de Brasília, Goiás e Entorno, no ar há 22 anos segundo o próprio site. Atuo na parte técnica da plataforma; a gestão das publicações não faz parte do meu escopo.',
+        problem:
+          'Manter uma plataforma de notícias estável, com anúncios, métricas e boa indexação.',
+        solution:
+          'WordPress com tema Newspaper, anúncios no AdRotate, métricas no Site Kit e SEO técnico (dados estruturados e URL canônica).',
+        tags: ['WordPress', 'Newspaper', 'AdRotate', 'Site Kit', 'SEO técnico', 'RSS'],
+        live: 'https://portaldocallado.com.br/',
+        detail:
+          'WordPress 7.1 com o tema Newspaper (tagDiv) e tema filho, anúncios no AdRotate e métricas no Google Site Kit. SEO técnico com JSON-LD, Open Graph, URL canônica e feed RSS, em layout responsivo. Não foi desenvolvido por mim: minha atuação é a parte técnica.'
+      },
+      {
+        name: 'Infforma',
+        cat: 'blogs',
+        badge: 'Portal · WordPress',
+        desc:
+          'Portal de notícias de Brasília e do Brasil, com política, economia, cidades, cultura e tecnologia. Atuo na parte técnica da plataforma; a gestão das publicações não faz parte do meu escopo.',
+        problem:
+          'Manter uma plataforma de notícias estável, com métricas e boa indexação.',
+        solution:
+          'WordPress com tema Newspaper, métricas no Site Kit e SEO técnico (dados estruturados, URL canônica e feed RSS).',
+        tags: ['WordPress', 'Newspaper', 'Site Kit', 'SEO técnico', 'RSS'],
+        live: 'https://infformadf.com.br/',
+        detail:
+          'WordPress 7.1 com o tema Newspaper (tagDiv) e métricas no Google Site Kit. SEO técnico com JSON-LD, Open Graph, URL canônica e feed RSS, em layout responsivo. Não foi desenvolvido por mim: minha atuação é a parte técnica.'
       }
     ],
 
@@ -288,6 +359,41 @@ const translations = {
 
   en: {}
 };
+
+Object.assign(translations.pt, {
+  api_kicker: 'API Client',
+  api_title: 'A API deste portfólio, rodando ao vivo.',
+  api_intro: 'Isto não é uma imagem: é a API que eu escrevi, em produção. Enquanto você lê, esta página chama a rota /api/projects com GET, POST, PATCH e DELETE, grava e apaga um registro de verdade no PostgreSQL e mostra aqui cada resposta.',
+  api_connected: 'conectado',
+  api_unavailable: 'indisponível',
+  api_flow_client: 'navegador',
+  api_flow_service: 'camada de serviço',
+  api_live: 'AO VIVO',
+  api_request: 'REQUISIÇÃO',
+  api_logs: 'registros',
+  api_status: 'Status HTTP',
+  api_time: 'Tempo de resposta',
+  api_waiting: 'aguardando',
+  api_cycle: 'Sequência de requisições',
+  api_note: 'Cada ciclo cria um registro de teste (POST), altera (PATCH), lê (GET) e apaga (DELETE), sem deixar nada para trás.',
+  api_history: 'Histórico',
+  api_history_hint: 'últimas 6 respostas',
+  api_col_time: 'Hora',
+  api_col_method: 'Método',
+  api_col_route: 'Rota',
+  api_col_status: 'Status',
+  projects_hint: 'Role para ver os projetos',
+  manifesto_label: 'Como eu trabalho',
+  manifesto: 'Gosto de entender o problema por completo antes de escolher a tecnologia.',
+  journey_eyebrow: 'Como uma API funciona',
+  journey_title: 'Uma requisição, de ponta a ponta.',
+  journey_steps: [
+    ['Cliente', 'A requisição sai do navegador ou do app, com método, rota e dados.'],
+    ['API', 'A rota recebe, valida os dados e confere autenticação e permissões.'],
+    ['Serviço', 'As regras de negócio ficam aqui, separadas da camada HTTP.'],
+    ['Banco de dados', 'O PostgreSQL grava os dados e a resposta volta ao cliente com o status certo.']
+  ]
+});
 
 translations.en = {
   ...translations.pt,
@@ -413,12 +519,25 @@ translations.en = {
 
   github_cta: 'View GitHub ↗',
   project_open: 'Open repository ↗',
+  project_live: 'Open the website ↗',
   project_details: 'View details',
   project_hide: 'Hide details',
 
   projects: [
     {
       ...translations.pt.projects[0],
+      badge: 'Backend · C# / .NET',
+      desc:
+        'Gym management API in C# and .NET 10: students, personal trainers, plans, enrollments, payments, workouts and physical assessments, with three access roles. In development.',
+      problem:
+        "Manage a gym's students, trainers, plans, enrollments and payments with consistent business rules and role-based access.",
+      solution:
+        'Domain entities that validate their own invariants, PostgreSQL with a partial unique index for one active enrollment per student, and use cases tested in the Application layer.',
+      detail:
+        'Layered architecture (Api, Application, Domain, Infrastructure) with the 13 V1 entities in the domain, EF Core persistence and initial seed data. The student, personal trainer, plan and enrollment services already have unit tests (43 tests). The cover is the administrator dashboard of the front-end prototype (V4), which shows the three views: administrator, personal trainer and student.'
+    },
+    {
+      ...translations.pt.projects[1],
       badge: 'SaaS · Backend',
       desc:
         'Multi-tenant electronic medical record platform for clinics, with patient management, appointments, medical records, RBAC and auditing.',
@@ -430,7 +549,7 @@ translations.en = {
         'React + TypeScript frontend consuming an Express API. PostgreSQL persistence through Drizzle ORM, authentication/RBAC, validation, auditing, Helmet, rate limiting, bcrypt and AES-256-GCM for integration secrets.'
     },
     {
-      ...translations.pt.projects[1],
+      ...translations.pt.projects[2],
       badge: 'Backend · Java',
       desc:
         'REST API for managing users, books, physical copies and loans, built with Java and Spring Boot.',
@@ -440,6 +559,44 @@ translations.en = {
         'Layered architecture with JPA/Hibernate, PostgreSQL, procedures for returns and fine calculation, validation and tests.',
       detail:
         'Backend organized into controller, service, repository, DTO and entity. Return and fine-calculation logic uses PL/pgSQL in PostgreSQL, with validation and tests for core API behavior.'
+    },
+    {
+      ...translations.pt.projects[3],
+      badge: 'Client site · Front-end',
+      desc:
+        'Website and WhatsApp ordering for Panificadora Sevylha, a bakery in Campina Grande (PB): customers build an order, or a full Christmas dinner, and send it ready to the store.',
+      problem:
+        'Let customers build an order, or the dinner, on their phone and hand the bakery an already organized message.',
+      solution:
+        'Menu with filters, an order drawer, a dinner builder and a checkout that writes the WhatsApp message, behind an interface ready to become an API.',
+      detail:
+        'Responsive pt-BR landing page with an open/closed badge from the real opening hours, an order saved in the browser and a dinner builder for 6 or 10 people. Delivery goes through an OrderGateway interface (WhatsApp today, an API later), the order logic is unit-tested, and the page has section transitions, smooth scrolling and a reduced-motion fallback.'
+    },
+    {
+      ...translations.pt.projects[4],
+      badge: 'Portal · WordPress',
+      desc:
+        "News portal for Brasília, Goiás and the surrounding area, online for 22 years according to the site itself. I work on the platform's technical side; managing the posts is outside my scope.",
+      problem:
+        'Keep a news platform stable, with ads, metrics and good indexing.',
+      solution:
+        'WordPress with the Newspaper theme, ads in AdRotate, metrics in Site Kit and technical SEO (structured data and canonical URLs).',
+      tags: ['WordPress', 'Newspaper', 'AdRotate', 'Site Kit', 'Technical SEO', 'RSS'],
+      detail:
+        'WordPress 7.1 with the Newspaper theme (tagDiv) and a child theme, ads in AdRotate and metrics in Google Site Kit. Technical SEO with JSON-LD, Open Graph, canonical URLs and an RSS feed, in a responsive layout. I did not build it: my work is the technical side.'
+    },
+    {
+      ...translations.pt.projects[5],
+      badge: 'Portal · WordPress',
+      desc:
+        "News portal for Brasília and Brazil, covering politics, economy, cities, culture and technology. I work on the platform's technical side; managing the posts is outside my scope.",
+      problem:
+        'Keep a news platform stable, with metrics and good indexing.',
+      solution:
+        'WordPress with the Newspaper theme, metrics in Site Kit and technical SEO (structured data, canonical URLs and an RSS feed).',
+      tags: ['WordPress', 'Newspaper', 'Site Kit', 'Technical SEO', 'RSS'],
+      detail:
+        'WordPress 7.1 with the Newspaper theme (tagDiv) and metrics in Google Site Kit. Technical SEO with JSON-LD, Open Graph, canonical URLs and an RSS feed, in a responsive layout. I did not build it: my work is the technical side.'
     }
   ],
 
@@ -542,5 +699,47 @@ translations.en = {
   footer_copy:
     '© 2026 Pedro Henrique Peixoto. All rights reserved.'
 };
+
+Object.assign(translations.en, {
+  api_kicker: 'API Client',
+  api_title: "This portfolio's API, running live.",
+  api_intro: 'This is not an image: it is the API I wrote, in production. While you read, this page calls the /api/projects route with GET, POST, PATCH and DELETE, writes and deletes a real record in PostgreSQL and shows every response here.',
+  api_connected: 'connected',
+  api_unavailable: 'unavailable',
+  api_flow_client: 'browser',
+  api_flow_service: 'service layer',
+  api_live: 'LIVE',
+  api_request: 'REQUEST',
+  api_logs: 'logs',
+  api_status: 'HTTP status',
+  api_time: 'Response time',
+  api_waiting: 'waiting',
+  api_cycle: 'Request sequence',
+  api_note: 'Each cycle creates a test record (POST), updates it (PATCH), reads it (GET) and deletes it (DELETE), leaving nothing behind.',
+  api_history: 'History',
+  api_history_hint: 'last 6 responses',
+  api_col_time: 'Time',
+  api_col_method: 'Method',
+  api_col_route: 'Route',
+  api_col_status: 'Status',
+  project_cats: {
+    backend: ['Back-end', 'APIs and business rules: what runs behind the screen.'],
+    frontend: ['Front-end', 'Websites and interfaces built for clients.'],
+    blogs: ['Portals I maintain', 'WordPress news portals where I work on the technical side.']
+  },
+  project_one: 'project',
+  project_many: 'projects',
+  projects_hint: 'Scroll to see the projects',
+  manifesto_label: 'How I work',
+  manifesto: 'I like understanding the whole problem before choosing the technology.',
+  journey_eyebrow: 'How an API works',
+  journey_title: 'One request, end to end.',
+  journey_steps: [
+    ['Client', 'The request leaves the browser or the app, with a method, a route and data.'],
+    ['API', 'The route receives it, validates the data and checks authentication and permissions.'],
+    ['Service', 'The business rules live here, apart from the HTTP layer.'],
+    ['Database', 'PostgreSQL stores the data and the response goes back to the client with the right status.']
+  ]
+});
 
 export { translations };

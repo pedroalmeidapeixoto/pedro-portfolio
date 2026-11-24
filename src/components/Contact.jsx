@@ -1,4 +1,5 @@
 import React from 'react';
+import Gears from './Gears';
 
 const links = [
   { key: 'whatsapp', label: 'WhatsApp', href: 'https://wa.me/5583986590715', icon: 'whatsapp' },
@@ -18,7 +19,8 @@ export default function Contact({ t }) {
   const resume = t.resume_file;
 
   return (
-    <section id="contato" className="contact-section">
+    <section id="contato" className="contact-section block" data-block>
+      <Gears className="contact-gears" />
       <div className="wrap">
         <div className="section-head reveal">
           <span>{t.contact_eyebrow}</span>

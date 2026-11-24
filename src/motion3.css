@@ -1,0 +1,633 @@
+/* ==========================================================================
+   Third round: the request scene fits the screen, project covers, the API client panel, a richer intro.
+   ========================================================================== */
+
+/* ---------- The request scene: everything must fit in one screen (the steps used to be cut at the bottom) ---------- */
+.journey__stage {
+  padding: 78px 0 28px;
+  min-height: 560px;
+}
+.journey__head {
+  max-width: none;
+  margin-bottom: clamp(10px, 2.4vh, 30px);
+}
+.journey__head > span {
+  margin-bottom: 10px;
+}
+.journey__head h2 {
+  font-size: clamp(30px, min(4.4vw, 6.6vh), 60px);
+}
+.journey__svg--h {
+  width: 100%;
+  height: min(27vh, 250px);
+  margin: 0 auto;
+}
+.journey__steps {
+  margin-top: clamp(10px, 2.2vh, 26px);
+}
+.journey__steps li {
+  padding-top: 14px;
+}
+.journey__steps h3 {
+  margin: 4px 0 6px;
+  font-size: clamp(20px, min(2vw, 3.4vh), 26px);
+}
+.journey__steps p {
+  font-size: clamp(14px, 1.9vh, 15.5px);
+  line-height: 1.5;
+}
+
+/* ---------- Projects: the title must fit its panel; covers on top of every card ---------- */
+.projects--rail .rail-intro {
+  flex: 0 0 440px;
+}
+.projects--rail .rail-intro h2,
+.projects .rail-intro h2 {
+  font-size: clamp(34px, min(4.2vw, 6.4vh), 58px);
+  overflow-wrap: anywhere;
+}
+.project-cover {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 4.3 / 1;
+  margin: -34px -38px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+.project-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0;
+  transition: transform 0.9s var(--ease);
+}
+.project-card:hover .project-cover img {
+  transform: scale(1.05);
+}
+.project-index {
+  display: none;
+}
+.projects--rail .project-card {
+  padding: 34px 38px 18px;
+}
+.projects--rail .project-top h3 {
+  font-size: clamp(30px, min(3.4vw, 5vh), 46px);
+}
+.projects--rail .project-desc {
+  margin: 8px 0 12px;
+  font-size: 15.5px;
+}
+.projects--rail .flow {
+  margin-bottom: 14px;
+  padding-top: 12px;
+}
+.projects--rail .case-grid {
+  margin-bottom: 14px;
+}
+.projects--rail .case-grid > div {
+  padding-top: 14px;
+}
+.projects--rail .details-btn {
+  margin-top: 12px;
+}
+@media (max-width: 960px) {
+  .project-cover {
+    margin: -26px -26px 18px;
+    height: auto;
+    aspect-ratio: 2.8 / 1;
+    border-radius: 19px 19px 0 0;
+  }
+  .project-cover img.cover-left {
+    object-position: 0 0;
+  }
+}
+
+/* The Library Management API has no screen, so its cover is the loan routes of its README (drawn in code). */
+.lib-cover {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  width: 100%;
+  height: 100%;
+  padding: 18px 26px;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(94, 234, 212, 0.2), transparent 45%),
+    linear-gradient(135deg, #0a1018, #0d1a22);
+}
+.lib-cover__spines {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 100%;
+  flex: none;
+}
+.lib-cover__spines i {
+  width: 16px;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(180deg, rgba(94, 234, 212, 0.55), rgba(94, 234, 212, 0.12));
+  border: 1px solid rgba(94, 234, 212, 0.45);
+  animation: spine 4.4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.5s);
+}
+@keyframes spine {
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.lib-cover__panel {
+  flex: 1;
+  min-width: 0;
+  align-self: center;
+  padding: 10px 14px 10px;
+  background: rgba(5, 8, 14, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font: 500 11.5px var(--mono);
+}
+.lib-cover__bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.lib-cover__bar span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+}
+.lib-cover__bar b {
+  margin-left: auto;
+  font-weight: 500;
+  color: var(--mute);
+}
+.lib-cover ul {
+  display: grid;
+  gap: 5px;
+  list-style: none;
+}
+.lib-cover li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  white-space: nowrap;
+}
+.lib-cover li strong {
+  min-width: 42px;
+  font-weight: 700;
+}
+.lib-cover li code {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ink);
+}
+.lib-cover li em {
+  font-style: normal;
+  color: #4ade80;
+}
+.m-post {
+  color: #a7f3d0;
+}
+.m-get {
+  color: #8ec5ff;
+}
+.lib-cover p {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  color: var(--lime);
+  font-size: 10.5px;
+}
+@media (max-width: 640px) {
+  .lib-cover {
+    padding: 12px 14px;
+  }
+  .lib-cover__spines {
+    display: none;
+  }
+  .lib-cover__panel {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+  .lib-cover__bar {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+  .lib-cover ul {
+    gap: 3px;
+  }
+  .lib-cover p {
+    display: none;
+  }
+}
+
+/* ---------- The API client ---------- */
+.api-client {
+  margin-top: clamp(48px, 6vw, 84px);
+}
+.api-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: start;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.api-kicker {
+  display: inline-block;
+  padding: 3px 12px;
+  border: 1px solid rgba(94, 234, 212, 0.4);
+  border-radius: 999px;
+  font: 600 11px var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+.api-head h3 {
+  margin: 14px 0 10px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(24px, 3vw, 36px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #fff;
+}
+.api-head p {
+  max-width: 640px;
+  font-size: 15.5px;
+  color: #b9b6a6;
+}
+.api-badges {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+}
+.api-badges li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font: 500 12px var(--mono);
+  color: #8b8878;
+  white-space: nowrap;
+}
+.api-badges li.is-ok {
+  color: #5fe27b;
+  border-color: rgba(95, 226, 123, 0.35);
+}
+.api-badges li.is-ok .status-dot {
+  box-shadow: 0 0 10px rgba(95, 226, 123, 0.8);
+}
+.api-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  font: 13px var(--mono);
+}
+.api-flow b {
+  font-weight: 500;
+  color: #fff;
+}
+.api-flow i {
+  font-style: normal;
+  color: var(--lime);
+}
+.api-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 26px;
+  align-items: start;
+}
+.api-now,
+.api-history {
+  padding: 20px 22px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+}
+.api-now .request-route {
+  margin: 14px 0 12px;
+}
+.api-result {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0 18px;
+}
+.api-result dt {
+  font: 500 11px var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8b8878;
+}
+.api-result dd {
+  margin-top: 4px;
+  font: 600 28px var(--display);
+  color: #fff;
+}
+.api-result dd small {
+  font: 500 13px var(--mono);
+  color: #b9b6a6;
+}
+.api-result dd.good {
+  color: var(--lime);
+}
+.api-result dd.bad {
+  color: #ff8b8b;
+}
+.api-cycle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+}
+.api-cycle li {
+  padding: 4px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  font: 600 11px var(--mono);
+  color: #8b8878;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+}
+.api-cycle li.is-done {
+  color: var(--lime);
+  border-color: rgba(94, 234, 212, 0.4);
+}
+.api-cycle li.is-now {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: var(--on-accent);
+}
+.api-note {
+  margin-top: 14px;
+  font-size: 13.5px;
+  color: #8b8878;
+}
+.api-history-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  font: 500 11px var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8b8878;
+}
+.api-history table {
+  width: 100%;
+  border-collapse: collapse;
+  font: 12.5px var(--mono);
+}
+.api-history th {
+  padding: 6px 8px 8px 0;
+  font-weight: 500;
+  text-align: left;
+  color: #8b8878;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.api-history td {
+  padding: 8px 8px 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #d4d1c3;
+}
+.api-history tbody tr:first-child td {
+  color: #fff;
+  animation: rowIn 0.5s var(--ease);
+}
+.api-history code {
+  overflow-wrap: anywhere;
+}
+.api-history td.good {
+  color: #5fe27b;
+}
+.api-history td.bad {
+  color: #ff8b8b;
+}
+.api-history .empty {
+  color: #8b8878;
+}
+.api-history .http-method {
+  background: none;
+  padding: 0;
+}
+@keyframes rowIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+@media (max-width: 960px) {
+  .api-head,
+  .api-grid {
+    grid-template-columns: 1fr;
+  }
+  .api-badges {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 640px) {
+  .api-history th:nth-child(1),
+  .api-history td:nth-child(1) {
+    display: none;
+  }
+  .api-history {
+    padding: 16px 14px;
+  }
+  .api-now {
+    padding: 16px 14px;
+  }
+}
+
+/* ---------- Intro: the name, a first request and a loader ---------- */
+.intro__log {
+  display: grid;
+  gap: 4px;
+  min-width: 190px;
+  list-style: none;
+  font: 12.5px var(--mono);
+  color: var(--lime);
+}
+.intro__log li {
+  opacity: 0;
+  animation: fadeUp 0.4s var(--ease) forwards;
+  animation-delay: calc(1s + var(--i) * 0.28s);
+}
+.intro__loader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+}
+.intro__loader b {
+  min-width: 46px;
+  font: 600 13px var(--mono);
+  color: var(--ink);
+}
+.intro .intro__bar {
+  width: 190px;
+}
+.intro .intro__bar::after {
+  display: none;
+}
+.intro .intro__bar i {
+  position: absolute;
+  inset: 0;
+  background: var(--lime);
+  transform-origin: left;
+  box-shadow: 0 0 12px rgba(94, 234, 212, 0.8);
+}
+
+/* Details open and close smoothly: a grid row that animates between 0fr and 1fr. On the pinned rail the card cannot grow past the screen,
+   so the open details trade places with the flow and the problem/solution block. */
+.collapse {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition:
+    grid-template-rows 0.55s var(--ease),
+    opacity 0.4s ease;
+}
+.collapse > div {
+  min-height: 0;
+  overflow: hidden;
+}
+.collapse--detail {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+.project-card.is-open .collapse--detail {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition-delay: 0.12s;
+}
+.projects--rail .project-card.is-open .collapse--main {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+.project-detail {
+  margin-top: 14px;
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+.details-btn span {
+  display: inline-block;
+  transition: transform 0.4s var(--ease);
+}
+@media (prefers-reduced-motion: reduce) {
+  .collapse {
+    transition: none;
+  }
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 22px;
+  margin-top: 12px;
+}
+.project-actions .details-btn {
+  margin-top: 0;
+}
+.project-live {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1px solid rgba(94, 234, 212, 0.45);
+  border-radius: 999px;
+  font: 600 13px var(--mono);
+  color: var(--lime);
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+.project-live:hover {
+  background: var(--lime);
+  color: var(--on-accent);
+}
+
+/* ---------- Category blocks on the rail: Back-end, Front-end, blogs ---------- */
+.rail-cat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 36px 0 6px;
+}
+.rail-cat__no {
+  font: 500 12px var(--mono);
+  letter-spacing: 0.16em;
+  color: var(--lime);
+}
+.rail-cat__no i {
+  font-style: normal;
+  color: var(--mute);
+}
+.rail-cat strong {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(30px, 6vw, 44px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+.rail-cat p {
+  max-width: 300px;
+  font-size: 15px;
+  color: var(--mute);
+}
+.rail-cat__count {
+  align-self: flex-start;
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font: 500 11px var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.projects--rail .rail-cat {
+  flex: 0 0 clamp(230px, 20vw, 290px);
+  align-self: stretch;
+  justify-content: center;
+  padding: 0 4px 0 30px;
+  position: relative;
+}
+.projects--rail .rail-cat::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12%;
+  bottom: 12%;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--lime), transparent);
+}
+.projects--rail .rail-cat::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 14px rgba(94, 234, 212, 0.8);
+}
+.projects--rail .rail-cat strong {
+  font-size: clamp(34px, min(3.6vw, 6vh), 52px);
+}

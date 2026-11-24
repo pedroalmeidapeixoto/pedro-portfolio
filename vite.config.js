@@ -85,7 +85,8 @@ function createLocalApi() {
         const response = createVercelResponse(res);
         try {
           await withBody(req);
-          const isIdRoute = /^\/api\/projects\/[^/?]+/.test(req.url || '');
+          // connect strips the mount path, so inside this middleware the URL is '/2031', not '/api/projects/2031'
+          const isIdRoute = /^\/[^/?]+/.test(req.url || '');
           await (isIdRoute ? projectByIdHandler(req, response) : projectsHandler(req, response));
         } catch (error) {
           if (!res.headersSent) response.status(500).json({ status: 'error', message: error instanceof Error ? error.message : 'Internal server error' });
