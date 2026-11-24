@@ -178,6 +178,19 @@ const translations = {
         detail:
           'Backend organizado em controller, service, repository, DTO e entity. A lógica de devolução e cálculo de multas utiliza PL/pgSQL no PostgreSQL, com validações e testes para o comportamento principal da API.',
         url: 'https://github.com/pedroalmeidapeixoto/library-management-api'
+      },
+      {
+        name: 'Panificadora Sevylha',
+        badge: 'Site de cliente · Front-end',
+        desc:
+          'Site e pedido por WhatsApp da Panificadora Sevylha, em Campina Grande (PB): o cliente monta o pedido, ou uma ceia de Natal completa, e envia pronto para a loja.',
+        problem:
+          'Deixar o cliente montar o pedido, ou a ceia, pelo celular e entregar à padaria uma mensagem já organizada.',
+        solution:
+          'Cardápio com filtros, gaveta de pedido, montador de ceia e checkout que gera a mensagem do WhatsApp, atrás de uma interface pronta para virar API.',
+        tags: ['React 19', 'TypeScript', 'Vite', 'Vitest', 'Lenis', 'WhatsApp'],
+        detail:
+          'Landing page responsiva em pt-BR com selo de aberto/fechado pelos horários reais, pedido salvo no navegador e montador de ceia para 6 ou 10 pessoas. O envio passa por uma interface OrderGateway (WhatsApp hoje, API depois), a lógica de pedido tem testes unitários e a página tem transições entre seções, rolagem suave e fallback para movimento reduzido.'
       }
     ],
 
@@ -475,6 +488,18 @@ translations.en = {
         'Layered architecture with JPA/Hibernate, PostgreSQL, procedures for returns and fine calculation, validation and tests.',
       detail:
         'Backend organized into controller, service, repository, DTO and entity. Return and fine-calculation logic uses PL/pgSQL in PostgreSQL, with validation and tests for core API behavior.'
+    },
+    {
+      ...translations.pt.projects[2],
+      badge: 'Client site · Front-end',
+      desc:
+        'Website and WhatsApp ordering for Panificadora Sevylha, a bakery in Campina Grande (PB): customers build an order, or a full Christmas dinner, and send it ready to the store.',
+      problem:
+        'Let customers build an order, or the dinner, on their phone and hand the bakery an already organized message.',
+      solution:
+        'Menu with filters, an order drawer, a dinner builder and a checkout that writes the WhatsApp message, behind an interface ready to become an API.',
+      detail:
+        'Responsive pt-BR landing page with an open/closed badge from the real opening hours, an order saved in the browser and a dinner builder for 6 or 10 people. Delivery goes through an OrderGateway interface (WhatsApp today, an API later), the order logic is unit-tested, and the page has section transitions, smooth scrolling and a reduced-motion fallback.'
     }
   ],
 

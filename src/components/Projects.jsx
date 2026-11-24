@@ -2,11 +2,16 @@ import React from 'react';
 import { useRail } from '../hooks/useScrollFx';
 import LibraryCover from './LibraryCover';
 import medrecordCover from '../assets/medrecord-cover.webp';
+import sevylhaCover from '../assets/sevylha-cover.webp';
+
+/** Covers that are screenshots; a project without one gets the cover drawn in code. */
+const COVERS = { MedRecord: medrecordCover, 'Panificadora Sevylha': sevylhaCover };
 
 /** The layers each project is built in, taken from the descriptions of the projects themselves (a packet crosses them in the card). */
 const FLOWS = {
   MedRecord: ['React', 'Express API', 'RBAC · audit', 'PostgreSQL'],
-  'Library Management API': ['Controller', 'Service', 'Repository', 'PostgreSQL']
+  'Library Management API': ['Controller', 'Service', 'Repository', 'PostgreSQL'],
+  'Panificadora Sevylha': ['Cardápio', 'Pedido', 'OrderGateway', 'WhatsApp']
 };
 
 /**
@@ -36,15 +41,18 @@ export default function Projects({ t }) {
             <article className="project-card" key={p.name}>
               <div className="project-index">0{i + 1}</div>
               <div className="project-main">
-                <a className="project-cover" href={p.url} target="_blank" rel="noreferrer" tabIndex={-1} aria-hidden="true">
-                  {p.name === 'MedRecord' ? <img src={medrecordCover} alt="" loading="lazy" /> : <LibraryCover />}
-                </a>
+                {(() => {
+                  const art = COVERS[p.name] ? <img className={p.name === 'Panificadora Sevylha' ? 'cover-left' : undefined} src={COVERS[p.name]} alt="" loading="lazy" /> : <LibraryCover />;
+                  return p.url
+                    ? <a className="project-cover" href={p.url} target="_blank" rel="noreferrer" tabIndex={-1} aria-hidden="true">{art}</a>
+                    : <div className="project-cover" aria-hidden="true">{art}</div>;
+                })()}
                 <div className="project-top">
                   <div>
                     <span className="project-badge">{p.badge}</span>
                     <h3>{p.name}</h3>
                   </div>
-                  <a className="project-arrow" href={p.url} target="_blank" rel="noreferrer" aria-label={t.project_open}>↗</a>
+                  {p.url && <a className="project-arrow" href={p.url} target="_blank" rel="noreferrer" aria-label={t.project_open}>↗</a>}
                 </div>
                 <p className="project-desc">{p.desc}</p>
 

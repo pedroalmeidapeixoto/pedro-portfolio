@@ -50,7 +50,7 @@
   position: relative;
   display: block;
   overflow: hidden;
-  height: clamp(110px, 25vh, 186px);
+  aspect-ratio: 4.3 / 1;
   margin: -34px -38px 16px;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
@@ -95,8 +95,12 @@
 @media (max-width: 960px) {
   .project-cover {
     margin: -26px -26px 18px;
-    height: 150px;
+    height: auto;
+    aspect-ratio: 2.8 / 1;
     border-radius: 19px 19px 0 0;
+  }
+  .project-cover img.cover-left {
+    object-position: 0 0;
   }
 }
 

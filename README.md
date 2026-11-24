@@ -48,7 +48,7 @@ The page motion comes from the client sites built with the same method (DJ Auto 
 | "One request, end to end": a pinned blueprint where a packet crosses CLIENT, API, SERVICE and DATABASE | `src/components/Journey.jsx`, `useSceneProgress` |
 | Projects as a pinned horizontal rail, with a packet crossing the layers of each project (React, Express, RBAC, PostgreSQL / Controller, Service, Repository, PostgreSQL); vertical list on narrow screens | `src/components/Projects.jsx`, `useRail` |
 | The profile terminal types itself out; headlines wipe up; gears behind the contact block | `About.jsx`, `src/motion2.css`, `Contact.jsx` |
-| Project covers: the MedRecord screenshot, and a cover drawn in code with the real loan routes for the Library API | `Projects.jsx`, `LibraryCover.jsx` |
+| Project covers (one 4.3:1 banner shape for all): cropped screenshots of MedRecord and the Panificadora Sevylha site, and a cover drawn in code with the real loan routes for the Library API. A project without a public `url` (Sevylha, private repository) renders without the repository link | `Projects.jsx`, `LibraryCover.jsx`, `src/assets/` |
 | API Client: explains what the live panel is, shows the request cycle (GET, POST, PATCH, GET, DELETE) and a history table of the last responses | `Skills.jsx`, `src/motion3.css` |
 | Route meter fixed at the bottom: the same packet crosses the stack as the page is read | `src/components/RouteWidget.jsx` |
 
