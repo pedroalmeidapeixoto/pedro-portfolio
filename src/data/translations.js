@@ -146,6 +146,21 @@ const translations = {
 
     projects: [
       {
+        name: 'GymCore',
+        cat: 'backend',
+        badge: 'Backend · C# / .NET',
+        desc:
+          'API de gestão de academias em C# e .NET 10: alunos, personal trainers, planos, matrículas, pagamentos, treinos e avaliações físicas, com três papéis de acesso. Em desenvolvimento.',
+        problem:
+          'Gerir alunos, personais, planos, matrículas e pagamentos de uma academia com regras de negócio consistentes e acesso por papel.',
+        solution:
+          'Entidades de domínio que validam os próprios invariantes, PostgreSQL com índice único parcial para uma matrícula ativa por aluno e casos de uso testados na camada Application.',
+        tags: ['C#', '.NET 10', 'ASP.NET Core', 'EF Core', 'PostgreSQL', 'xUnit'],
+        detail:
+          'Arquitetura em camadas (Api, Application, Domain, Infrastructure) com as 13 entidades da V1 no domínio, persistência com EF Core e seed inicial. Os serviços de alunos, personal trainers, planos e matrículas já têm testes unitários (43 testes). A capa é o painel do administrador do protótipo de front-end (V4), que mostra as três visões: administrador, personal trainer e aluno.',
+        url: 'https://github.com/pedroalmeidapeixoto/GymCore'
+      },
+      {
         name: 'MedRecord',
         cat: 'backend',
         badge: 'SaaS · Backend',
@@ -188,21 +203,6 @@ const translations = {
         detail:
           'Backend organizado em controller, service, repository, DTO e entity. A lógica de devolução e cálculo de multas utiliza PL/pgSQL no PostgreSQL, com validações e testes para o comportamento principal da API.',
         url: 'https://github.com/pedroalmeidapeixoto/library-management-api'
-      },
-      {
-        name: 'GymCore',
-        cat: 'backend',
-        badge: 'Backend · C# / .NET',
-        desc:
-          'API de gestão de academias em C# e .NET 10: alunos, personal trainers, planos, matrículas, pagamentos, treinos e avaliações físicas, com três papéis de acesso. Em desenvolvimento.',
-        problem:
-          'Gerir alunos, personais, planos, matrículas e pagamentos de uma academia com regras de negócio consistentes e acesso por papel.',
-        solution:
-          'Entidades de domínio que validam os próprios invariantes, PostgreSQL com índice único parcial para uma matrícula ativa por aluno e casos de uso testados na camada Application.',
-        tags: ['C#', '.NET 10', 'ASP.NET Core', 'EF Core', 'PostgreSQL', 'xUnit'],
-        detail:
-          'Arquitetura em camadas (Api, Application, Domain, Infrastructure) com as 13 entidades da V1 no domínio, persistência com EF Core e seed inicial. Os serviços de alunos, personal trainers, planos e matrículas já têm testes unitários (43 testes). A capa é o painel do administrador do protótipo de front-end (V4), que mostra as três visões: administrador, personal trainer e aluno.',
-        url: 'https://github.com/pedroalmeidapeixoto/GymCore'
       },
       {
         name: 'Panificadora Sevylha',
@@ -526,6 +526,18 @@ translations.en = {
   projects: [
     {
       ...translations.pt.projects[0],
+      badge: 'Backend · C# / .NET',
+      desc:
+        'Gym management API in C# and .NET 10: students, personal trainers, plans, enrollments, payments, workouts and physical assessments, with three access roles. In development.',
+      problem:
+        "Manage a gym's students, trainers, plans, enrollments and payments with consistent business rules and role-based access.",
+      solution:
+        'Domain entities that validate their own invariants, PostgreSQL with a partial unique index for one active enrollment per student, and use cases tested in the Application layer.',
+      detail:
+        'Layered architecture (Api, Application, Domain, Infrastructure) with the 13 V1 entities in the domain, EF Core persistence and initial seed data. The student, personal trainer, plan and enrollment services already have unit tests (43 tests). The cover is the administrator dashboard of the front-end prototype (V4), which shows the three views: administrator, personal trainer and student.'
+    },
+    {
+      ...translations.pt.projects[1],
       badge: 'SaaS · Backend',
       desc:
         'Multi-tenant electronic medical record platform for clinics, with patient management, appointments, medical records, RBAC and auditing.',
@@ -537,7 +549,7 @@ translations.en = {
         'React + TypeScript frontend consuming an Express API. PostgreSQL persistence through Drizzle ORM, authentication/RBAC, validation, auditing, Helmet, rate limiting, bcrypt and AES-256-GCM for integration secrets.'
     },
     {
-      ...translations.pt.projects[1],
+      ...translations.pt.projects[2],
       badge: 'Backend · Java',
       desc:
         'REST API for managing users, books, physical copies and loans, built with Java and Spring Boot.',
@@ -547,18 +559,6 @@ translations.en = {
         'Layered architecture with JPA/Hibernate, PostgreSQL, procedures for returns and fine calculation, validation and tests.',
       detail:
         'Backend organized into controller, service, repository, DTO and entity. Return and fine-calculation logic uses PL/pgSQL in PostgreSQL, with validation and tests for core API behavior.'
-    },
-    {
-      ...translations.pt.projects[2],
-      badge: 'Backend · C# / .NET',
-      desc:
-        'Gym management API in C# and .NET 10: students, personal trainers, plans, enrollments, payments, workouts and physical assessments, with three access roles. In development.',
-      problem:
-        "Manage a gym's students, trainers, plans, enrollments and payments with consistent business rules and role-based access.",
-      solution:
-        'Domain entities that validate their own invariants, PostgreSQL with a partial unique index for one active enrollment per student, and use cases tested in the Application layer.',
-      detail:
-        'Layered architecture (Api, Application, Domain, Infrastructure) with the 13 V1 entities in the domain, EF Core persistence and initial seed data. The student, personal trainer, plan and enrollment services already have unit tests (43 tests). The cover is the administrator dashboard of the front-end prototype (V4), which shows the three views: administrator, personal trainer and student.'
     },
     {
       ...translations.pt.projects[3],
