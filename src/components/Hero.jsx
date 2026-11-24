@@ -67,7 +67,14 @@ export default function Hero({ t, onNavigate }) {
           </div>
         </div>
       </div>
-      <div className="wrap hero-bottom"><span>{t.hero_location}</span><span>SCROLL TO EXPLORE ↓</span></div>
+      <div className="wrap hero-bottom"><span>{t.hero_location}</span><span>↓</span></div>
+      <div className="ticker" aria-hidden="true">
+        <div className="ticker-track">
+          {[...stack, ...stack, ...stack, ...stack].map(([name, src], index) => (
+            <span key={`${name}-${index}`}><img src={src} alt="" />{name}</span>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
