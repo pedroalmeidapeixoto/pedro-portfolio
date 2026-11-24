@@ -18,7 +18,7 @@ export default function Journey({ t }) {
     <section className="journey block" data-block id="jornada" ref={ref}>
       <div className="journey__stage">
         <div className="wrap">
-          <div className="section-head journey__head">
+          <div className="section-head journey__head reveal">
             <span>{t.journey_eyebrow}</span>
             <h2>{t.journey_title}</h2>
           </div>

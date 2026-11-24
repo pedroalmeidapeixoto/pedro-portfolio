@@ -1,34 +1,37 @@
 import React from 'react';
 import { prefersReducedMotion } from '../hooks/useMotion';
 
-const SEEN_KEY = 'pp-intro-seen';
-
-/** The intro plays once per browser tab and never with reduced motion. Storage can be blocked, so every access is guarded. */
+/** The intro plays on every visit (it lasts under three seconds) and never with reduced motion. */
 export function shouldPlayIntro() {
-  if (typeof window === 'undefined' || prefersReducedMotion()) return false;
-  try {
-    return window.sessionStorage.getItem(SEEN_KEY) !== '1';
-  } catch {
-    return true;
-  }
+  return typeof window !== 'undefined' && !prefersReducedMotion();
 }
 
-/** Opening screen (the idea of the DJ Auto Center intro): the monogram `{ P }` draws itself, the name appears and the curtain lifts. */
+const LINES = ['> connecting…', '> GET /  200 OK', '> hello, world'];
+
+/**
+ * Opening screen (the idea of the DJ Auto Center and Thiago Bike intros): the monogram `{ P }` draws itself, the name appears, a loader counts
+ * to 100 with the lines of a first request, then the curtain lifts and the page starts under it.
+ */
 export default function Intro({ onDone }) {
   const [phase, setPhase] = React.useState('draw');
+  const [percent, setPercent] = React.useState(0);
 
   React.useEffect(() => {
-    try {
-      window.sessionStorage.setItem(SEEN_KEY, '1');
-    } catch {
-      /* storage unavailable: the intro simply plays again next time */
-    }
+    const start = performance.now();
+    let frame = 0;
+    const tick = (now) => {
+      const progress = Math.min(1, (now - start) / 1900);
+      setPercent(Math.round(progress * 100));
+      if (progress < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
     const lift = window.setTimeout(() => {
       setPhase('lift');
       onDone();
-    }, 1700);
-    const gone = window.setTimeout(() => setPhase('gone'), 2500);
+    }, 2100);
+    const gone = window.setTimeout(() => setPhase('gone'), 3000);
     return () => {
+      cancelAnimationFrame(frame);
       window.clearTimeout(lift);
       window.clearTimeout(gone);
     };
@@ -46,7 +49,14 @@ export default function Intro({ onDone }) {
         <p className="intro__name">
           pedro<span>.dev</span>
         </p>
-        <span className="intro__bar" />
+        <p className="intro__role">Backend developer · C# / .NET</p>
+        <ul className="intro__log">
+          {LINES.map((line, index) => <li key={line} style={{ '--i': index }}>{line}</li>)}
+        </ul>
+        <div className="intro__loader">
+          <span className="intro__bar"><i style={{ transform: `scaleX(${percent / 100})` }} /></span>
+          <b>{String(percent).padStart(3, '0')}%</b>
+        </div>
       </div>
     </div>
   );

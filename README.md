@@ -40,7 +40,7 @@ The page motion comes from the client sites built with the same method (DJ Auto 
 
 | Effect | Where |
 | --- | --- |
-| Intro: the `{ P }` monogram draws itself, then the curtain lifts (once per tab, never with reduced motion) | `src/components/Intro.jsx` |
+| Intro on every visit: the `{ P }` monogram draws itself, the name appears, three lines of a first request and a loader count to 100, then the curtain lifts (never with reduced motion) | `src/components/Intro.jsx`, `src/motion3.css` |
 | Smooth scroll (Lenis), sheets that slide over each other, reveals, parallax, progress bar | `src/hooks/useMotion.js`, `src/motion.css` |
 | Masked headline in the hero | `Hero.jsx`, `.mask` in `motion.css` |
 | Two meshing gears that turn with the scroll speed | `src/components/Gears.jsx`, `useSpin` in `src/hooks/useScrollFx.js` |
@@ -48,6 +48,8 @@ The page motion comes from the client sites built with the same method (DJ Auto 
 | "One request, end to end": a pinned blueprint where a packet crosses CLIENT, API, SERVICE and DATABASE | `src/components/Journey.jsx`, `useSceneProgress` |
 | Projects as a pinned horizontal rail, with a packet crossing the layers of each project (React, Express, RBAC, PostgreSQL / Controller, Service, Repository, PostgreSQL); vertical list on narrow screens | `src/components/Projects.jsx`, `useRail` |
 | The profile terminal types itself out; headlines wipe up; gears behind the contact block | `About.jsx`, `src/motion2.css`, `Contact.jsx` |
+| Project covers: the MedRecord screenshot, and a cover drawn in code with the real loan routes for the Library API | `Projects.jsx`, `LibraryCover.jsx` |
+| API Client: explains what the live panel is, shows the request cycle (GET, POST, PATCH, GET, DELETE) and a history table of the last responses | `Skills.jsx`, `src/motion3.css` |
 | Route meter fixed at the bottom: the same packet crosses the stack as the page is read | `src/components/RouteWidget.jsx` |
 
 Everything is drawn in SVG and CSS; the only new dependency is `lenis`. With `prefers-reduced-motion` nothing moves and the scenes show their final state.

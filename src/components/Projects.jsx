@@ -1,5 +1,7 @@
 import React from 'react';
 import { useRail } from '../hooks/useScrollFx';
+import LibraryCover from './LibraryCover';
+import medrecordCover from '../assets/medrecord-cover.webp';
 
 /** The layers each project is built in, taken from the descriptions of the projects themselves (a packet crosses them in the card). */
 const FLOWS = {
@@ -34,6 +36,9 @@ export default function Projects({ t }) {
             <article className="project-card" key={p.name}>
               <div className="project-index">0{i + 1}</div>
               <div className="project-main">
+                <a className="project-cover" href={p.url} target="_blank" rel="noreferrer" tabIndex={-1} aria-hidden="true">
+                  {p.name === 'MedRecord' ? <img src={medrecordCover} alt="" loading="lazy" /> : <LibraryCover />}
+                </a>
                 <div className="project-top">
                   <div>
                     <span className="project-badge">{p.badge}</span>
