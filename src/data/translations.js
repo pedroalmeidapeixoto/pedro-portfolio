@@ -290,6 +290,7 @@ const translations = {
 };
 
 Object.assign(translations.pt, {
+  projects_hint: 'Role para ver os projetos',
   manifesto_label: 'Como eu trabalho',
   manifesto: 'Gosto de entender o problema por completo antes de escolher a tecnologia.',
   journey_eyebrow: 'Como uma API funciona',
@@ -557,6 +558,7 @@ translations.en = {
 };
 
 Object.assign(translations.en, {
+  projects_hint: 'Scroll to see the projects',
   manifesto_label: 'How I work',
   manifesto: 'I like understanding the whole problem before choosing the technology.',
   journey_eyebrow: 'How an API works',

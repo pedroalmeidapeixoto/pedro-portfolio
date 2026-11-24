@@ -46,6 +46,8 @@ The page motion comes from the client sites built with the same method (DJ Auto 
 | Two meshing gears that turn with the scroll speed | `src/components/Gears.jsx`, `useSpin` in `src/hooks/useScrollFx.js` |
 | Manifesto: one sentence lights up word by word | `src/components/Manifesto.jsx`, `useScrubWords` |
 | "One request, end to end": a pinned blueprint where a packet crosses CLIENT, API, SERVICE and DATABASE | `src/components/Journey.jsx`, `useSceneProgress` |
+| Projects as a pinned horizontal rail, with a packet crossing the layers of each project (React, Express, RBAC, PostgreSQL / Controller, Service, Repository, PostgreSQL); vertical list on narrow screens | `src/components/Projects.jsx`, `useRail` |
+| The profile terminal types itself out; headlines wipe up; gears behind the contact block | `About.jsx`, `src/motion2.css`, `Contact.jsx` |
 | Route meter fixed at the bottom: the same packet crosses the stack as the page is read | `src/components/RouteWidget.jsx` |
 
 Everything is drawn in SVG and CSS; the only new dependency is `lenis`. With `prefers-reduced-motion` nothing moves and the scenes show their final state.

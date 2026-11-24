@@ -39,7 +39,7 @@ export default function RouteWidget() {
   }, []);
 
   return (
-    <div className={`route${current === 'jornada' ? ' route--hidden' : ''}`} ref={root} aria-hidden="true">
+    <div className={`route${current === 'jornada' || current === 'projetos' ? ' route--hidden' : ''}`} ref={root} aria-hidden="true">
       <svg viewBox="0 0 200 22" fill="none">
         <path className="route__line" d="M8 11H192" />
         <path className="route__done" d="M8 11H192" pathLength="1" />

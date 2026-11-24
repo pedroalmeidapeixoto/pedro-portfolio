@@ -145,3 +145,67 @@ export function useCurrentSection(ids) {
   }, [ids]);
   return current;
 }
+
+/**
+ * The pinned rail (the "projects" of DJ Auto Center): makes the section tall enough for the track to cross sideways while the stage is
+ * pinned, and writes the sideways distance in `--rail` (px) and the progress in `--rp`. Returns whether the rail is on: it is off on
+ * narrow screens and with reduced motion, where the cards simply stack.
+ */
+export function useRail(sectionRef, trackRef) {
+  const [on, setOn] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    if (!section || !track) return undefined;
+    let distance = 0;
+    let frame = 0;
+
+    const measure = () => {
+      const enabled = window.innerWidth > 960 && !prefersReducedMotion();
+      setOn(enabled);
+      if (!enabled) {
+        section.style.height = '';
+        section.style.setProperty('--rail', '0');
+        section.style.setProperty('--rp', '0');
+        distance = 0;
+        return;
+      }
+      distance = Math.max(0, track.scrollWidth - window.innerWidth);
+      section.style.height = `${distance + window.innerHeight}px`;
+    };
+    const update = () => {
+      frame = 0;
+      if (!distance) return;
+      const rect = section.getBoundingClientRect();
+      const progress = clamp(-rect.top / distance);
+      section.style.setProperty('--rail', (progress * distance).toFixed(1));
+      section.style.setProperty('--rp', progress.toFixed(4));
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    const remeasure = () => {
+      measure();
+      schedule();
+    };
+
+    measure();
+    update();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', remeasure);
+    // the cards change their height when their details open, and fonts and images change widths after the first paint
+    const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(remeasure) : null;
+    observer?.observe(track);
+    document.fonts?.ready.then(remeasure).catch(() => undefined);
+    return () => {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', remeasure);
+      observer?.disconnect();
+      if (frame) cancelAnimationFrame(frame);
+      section.style.height = '';
+    };
+  }, [sectionRef, trackRef]);
+
+  return on;
+}
