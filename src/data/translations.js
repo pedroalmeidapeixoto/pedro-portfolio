@@ -126,6 +126,13 @@ const translations = {
     solution: 'SOLUÇÃO',
     send_email: 'Enviar e-mail',
 
+    project_cats: {
+      backend: ['Back-end', 'APIs e regras de negócio: o que roda por trás da tela.'],
+      frontend: ['Front-end', 'Sites e interfaces feitos para clientes.'],
+      blogs: ['Blogs que administro', 'Portais de notícias que não desenvolvi, mas que eu gerencio.']
+    },
+    project_one: 'projeto',
+    project_many: 'projetos',
     projects_eyebrow: 'Projetos',
     projects_title: 'Onde o desenvolvimento acontece.',
     projects_intro:
@@ -140,6 +147,7 @@ const translations = {
     projects: [
       {
         name: 'MedRecord',
+        cat: 'backend',
         badge: 'SaaS · Backend',
         desc:
           'Plataforma de prontuário eletrônico multi-tenant para clínicas, com gestão de pacientes, agendamentos, prontuários, RBAC e auditoria.',
@@ -161,6 +169,7 @@ const translations = {
       },
       {
         name: 'Library Management API',
+        cat: 'backend',
         badge: 'Backend · Java',
         desc:
           'API REST para gerenciamento de usuários, livros, exemplares físicos e empréstimos, construída com Java e Spring Boot.',
@@ -181,7 +190,23 @@ const translations = {
         url: 'https://github.com/pedroalmeidapeixoto/library-management-api'
       },
       {
+        name: 'GymCore',
+        cat: 'backend',
+        badge: 'Backend · C# / .NET',
+        desc:
+          'API de gestão de academias em C# e .NET 10: alunos, personal trainers, planos, matrículas, pagamentos, treinos e avaliações físicas, com três papéis de acesso. Em desenvolvimento.',
+        problem:
+          'Gerir alunos, personais, planos, matrículas e pagamentos de uma academia com regras de negócio consistentes e acesso por papel.',
+        solution:
+          'Entidades de domínio que validam os próprios invariantes, PostgreSQL com índice único parcial para uma matrícula ativa por aluno e casos de uso testados na camada Application.',
+        tags: ['C#', '.NET 10', 'ASP.NET Core', 'EF Core', 'PostgreSQL', 'xUnit'],
+        detail:
+          'Arquitetura em camadas (Api, Application, Domain, Infrastructure) com as 13 entidades da V1 no domínio, persistência com EF Core e seed inicial. Os serviços de alunos, personal trainers, planos e matrículas já têm testes unitários (43 testes). A capa é o painel do administrador do protótipo de front-end (V4), que mostra as três visões: administrador, personal trainer e aluno.',
+        url: 'https://github.com/pedroalmeidapeixoto/GymCore'
+      },
+      {
         name: 'Panificadora Sevylha',
+        cat: 'frontend',
         badge: 'Site de cliente · Front-end',
         desc:
           'Site e pedido por WhatsApp da Panificadora Sevylha, em Campina Grande (PB): o cliente monta o pedido, ou uma ceia de Natal completa, e envia pronto para a loja.',
@@ -194,6 +219,36 @@ const translations = {
         live: 'https://panificadora-sevylha-site.vercel.app/',
         detail:
           'Landing page responsiva em pt-BR com selo de aberto/fechado pelos horários reais, pedido salvo no navegador e montador de ceia para 6 ou 10 pessoas. O envio passa por uma interface OrderGateway (WhatsApp hoje, API depois), a lógica de pedido tem testes unitários e a página tem transições entre seções, rolagem suave e fallback para movimento reduzido.'
+      },
+      {
+        name: 'Portal do Callado',
+        cat: 'blogs',
+        badge: 'Blog · Gestão de conteúdo',
+        desc:
+          'Portal de notícias de Brasília, Goiás e Entorno que eu administro: política, concursos, economia, variedades, blogs e carta do leitor. No ar há 22 anos, segundo o próprio site.',
+        caseLabels: ['Meu papel', 'O portal'],
+        problem: 'Administro o portal e o mantenho atualizado no dia a dia.',
+        solution:
+          'Notícias de Brasília, Brasil, Goiás e Entorno, política, concursos, economia, variedades e blogs, em um site WordPress.',
+        tags: ['WordPress', 'Notícias', 'Gestão de conteúdo'],
+        live: 'https://portaldocallado.com.br/',
+        detail:
+          'Site de notícias em WordPress com as editorias Brasil, Brasília, Goiás & Entorno, Política, Concursos, Economia, Variedades, Blogs, Eleições e Carta do Leitor. Não foi desenvolvido por mim: eu cuido da administração.'
+      },
+      {
+        name: 'Infforma',
+        cat: 'blogs',
+        badge: 'Blog · Gestão de conteúdo',
+        desc:
+          'Portal de notícias de Brasília e do Brasil que eu administro: política, economia, cidades, cultura, tecnologia e os principais acontecimentos do dia.',
+        caseLabels: ['Meu papel', 'O portal'],
+        problem: 'Administro o portal e o mantenho atualizado no dia a dia.',
+        solution:
+          'Editorias de Brasília, Goiás e Entorno, Política, Opinião, Brasil, Universo Feminino e Variedades, em um site WordPress.',
+        tags: ['WordPress', 'Notícias', 'Gestão de conteúdo'],
+        live: 'https://infformadf.com.br/',
+        detail:
+          'Site de notícias em WordPress com as editorias Brasília, GO & Entorno, Política, Opinião, Brasil, Universo Feminino e Variedades. Não foi desenvolvido por mim: eu cuido da administração.'
       }
     ],
 
@@ -495,6 +550,18 @@ translations.en = {
     },
     {
       ...translations.pt.projects[2],
+      badge: 'Backend · C# / .NET',
+      desc:
+        'Gym management API in C# and .NET 10: students, personal trainers, plans, enrollments, payments, workouts and physical assessments, with three access roles. In development.',
+      problem:
+        "Manage a gym's students, trainers, plans, enrollments and payments with consistent business rules and role-based access.",
+      solution:
+        'Domain entities that validate their own invariants, PostgreSQL with a partial unique index for one active enrollment per student, and use cases tested in the Application layer.',
+      detail:
+        'Layered architecture (Api, Application, Domain, Infrastructure) with the 13 V1 entities in the domain, EF Core persistence and initial seed data. The student, personal trainer, plan and enrollment services already have unit tests (43 tests). The cover is the administrator dashboard of the front-end prototype (V4), which shows the three views: administrator, personal trainer and student.'
+    },
+    {
+      ...translations.pt.projects[3],
       badge: 'Client site · Front-end',
       desc:
         'Website and WhatsApp ordering for Panificadora Sevylha, a bakery in Campina Grande (PB): customers build an order, or a full Christmas dinner, and send it ready to the store.',
@@ -504,6 +571,30 @@ translations.en = {
         'Menu with filters, an order drawer, a dinner builder and a checkout that writes the WhatsApp message, behind an interface ready to become an API.',
       detail:
         'Responsive pt-BR landing page with an open/closed badge from the real opening hours, an order saved in the browser and a dinner builder for 6 or 10 people. Delivery goes through an OrderGateway interface (WhatsApp today, an API later), the order logic is unit-tested, and the page has section transitions, smooth scrolling and a reduced-motion fallback.'
+    },
+    {
+      ...translations.pt.projects[4],
+      badge: 'Blog · Content management',
+      desc:
+        "News portal for Brasília, Goiás and the surrounding area that I administer: politics, public exams, economy, lifestyle, blogs and readers' letters. Online for 22 years, according to the site itself.",
+      caseLabels: ['My role', 'The portal'],
+      problem: 'I administer the portal and keep it up to date day to day.',
+      solution:
+        'News from Brasília, Brazil, Goiás and the surrounding area, politics, public exams, economy, lifestyle and blogs, on a WordPress site.',
+      detail:
+        'WordPress news site with the sections Brasil, Brasília, Goiás & Entorno, Política, Concursos, Economia, Variedades, Blogs, Eleições and Carta do Leitor. I did not build it: I handle its administration.'
+    },
+    {
+      ...translations.pt.projects[5],
+      badge: 'Blog · Content management',
+      desc:
+        'News portal for Brasília and Brazil that I administer: politics, economy, cities, culture, technology and the main events of the day.',
+      caseLabels: ['My role', 'The portal'],
+      problem: 'I administer the portal and keep it up to date day to day.',
+      solution:
+        "Sections for Brasília, Goiás and the surrounding area, Politics, Opinion, Brazil, Women's Universe and Lifestyle, on a WordPress site.",
+      detail:
+        'WordPress news site with the sections Brasília, GO & Entorno, Política, Opinião, Brasil, Universo Feminino and Variedades. I did not build it: I handle its administration.'
     }
   ],
 
@@ -629,6 +720,13 @@ Object.assign(translations.en, {
   api_col_method: 'Method',
   api_col_route: 'Route',
   api_col_status: 'Status',
+  project_cats: {
+    backend: ['Back-end', 'APIs and business rules: what runs behind the screen.'],
+    frontend: ['Front-end', 'Websites and interfaces built for clients.'],
+    blogs: ['Blogs I administer', 'News portals I did not build, but that I manage.']
+  },
+  project_one: 'project',
+  project_many: 'projects',
   projects_hint: 'Scroll to see the projects',
   manifesto_label: 'How I work',
   manifesto: 'I like understanding the whole problem before choosing the technology.',

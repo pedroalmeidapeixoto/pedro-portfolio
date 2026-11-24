@@ -214,6 +214,17 @@
   }
   .lib-cover__panel {
     font-size: 10px;
+    padding: 6px 10px;
+  }
+  .lib-cover__bar {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+  .lib-cover ul {
+    gap: 3px;
+  }
+  .lib-cover p {
+    display: none;
   }
 }
 
@@ -549,4 +560,74 @@
 .project-live:hover {
   background: var(--lime);
   color: var(--on-accent);
+}
+
+/* ---------- Category blocks on the rail: Back-end, Front-end, blogs ---------- */
+.rail-cat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 36px 0 6px;
+}
+.rail-cat__no {
+  font: 500 12px var(--mono);
+  letter-spacing: 0.16em;
+  color: var(--lime);
+}
+.rail-cat__no i {
+  font-style: normal;
+  color: var(--mute);
+}
+.rail-cat strong {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(30px, 6vw, 44px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+.rail-cat p {
+  max-width: 300px;
+  font-size: 15px;
+  color: var(--mute);
+}
+.rail-cat__count {
+  align-self: flex-start;
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font: 500 11px var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.projects--rail .rail-cat {
+  flex: 0 0 clamp(230px, 20vw, 290px);
+  align-self: stretch;
+  justify-content: center;
+  padding: 0 4px 0 30px;
+  position: relative;
+}
+.projects--rail .rail-cat::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12%;
+  bottom: 12%;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--lime), transparent);
+}
+.projects--rail .rail-cat::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 14px rgba(94, 234, 212, 0.8);
+}
+.projects--rail .rail-cat strong {
+  font-size: clamp(34px, min(3.6vw, 6vh), 52px);
 }

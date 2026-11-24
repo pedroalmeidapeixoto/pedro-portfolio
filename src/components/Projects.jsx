@@ -3,16 +3,42 @@ import { useRail } from '../hooks/useScrollFx';
 import LibraryCover from './LibraryCover';
 import medrecordCover from '../assets/medrecord-cover.webp';
 import sevylhaCover from '../assets/sevylha-cover.webp';
+import gymcoreCover from '../assets/gymcore-cover.webp';
+import calladoCover from '../assets/callado-cover.webp';
+import infformaCover from '../assets/infforma-cover.webp';
 
 /** Covers that are screenshots; a project without one gets the cover drawn in code. */
-const COVERS = { MedRecord: medrecordCover, 'Panificadora Sevylha': sevylhaCover };
+const COVERS = {
+  MedRecord: medrecordCover,
+  GymCore: gymcoreCover,
+  'Panificadora Sevylha': sevylhaCover,
+  'Portal do Callado': calladoCover,
+  Infforma: infformaCover
+};
+
+/** Covers whose subject sits on the left, so the narrow phone crop keeps it. */
+const LEFT_COVERS = new Set(['Panificadora Sevylha', 'Portal do Callado']);
 
 /** The layers each project is built in, taken from the descriptions of the projects themselves (a packet crosses them in the card). */
 const FLOWS = {
   MedRecord: ['React', 'Express API', 'RBAC · audit', 'PostgreSQL'],
   'Library Management API': ['Controller', 'Service', 'Repository', 'PostgreSQL'],
+  GymCore: ['Api', 'Application', 'Domain', 'PostgreSQL'],
   'Panificadora Sevylha': ['Cardápio', 'Pedido', 'OrderGateway', 'WhatsApp']
 };
+
+/** Marks the change of category on the rail: Back-end, Front-end, blogs. */
+function CategoryDivider({ t, cat, count, number, total }) {
+  const [title, text] = t.project_cats[cat];
+  return (
+    <div className="rail-cat" role="heading" aria-level={3}>
+      <span className="rail-cat__no">{String(number).padStart(2, '0')}<i> / {String(total).padStart(2, '0')}</i></span>
+      <strong>{title}</strong>
+      <p>{text}</p>
+      <span className="rail-cat__count">{count} {count === 1 ? t.project_one : t.project_many}</span>
+    </div>
+  );
+}
 
 /**
  * Projects as a pinned horizontal rail (the pinned rail of DJ Auto Center): while the section is pinned the scroll moves the row of
@@ -23,6 +49,7 @@ export default function Projects({ t }) {
   const section = React.useRef(null);
   const track = React.useRef(null);
   const railOn = useRail(section, track);
+  const order = [...new Set(t.projects.map((p) => p.cat))];
 
   return (
     <section id="projetos" ref={section} className={`block projects${railOn ? ' projects--rail' : ''}`} data-block>
@@ -38,11 +65,15 @@ export default function Projects({ t }) {
           </div>
 
           {t.projects.map((p, i) => (
-            <article className={`project-card${open === i ? ' is-open' : ''}`} key={p.name}>
+            <React.Fragment key={p.name}>
+            {p.cat !== t.projects[i - 1]?.cat && (
+              <CategoryDivider t={t} cat={p.cat} count={t.projects.filter((x) => x.cat === p.cat).length} number={order.indexOf(p.cat) + 1} total={order.length} />
+            )}
+            <article className={`project-card${open === i ? ' is-open' : ''}`}>
               <div className="project-index">0{i + 1}</div>
               <div className="project-main">
                 {(() => {
-                  const art = COVERS[p.name] ? <img className={p.name === 'Panificadora Sevylha' ? 'cover-left' : undefined} src={COVERS[p.name]} alt="" loading="lazy" /> : <LibraryCover />;
+                  const art = COVERS[p.name] ? <img className={LEFT_COVERS.has(p.name) ? 'cover-left' : undefined} src={COVERS[p.name]} alt="" loading="lazy" /> : <LibraryCover />;
                   const href = p.live || p.url;
                   return href
                     ? <a className="project-cover" href={href} target="_blank" rel="noreferrer" tabIndex={-1} aria-hidden="true">{art}</a>
@@ -66,8 +97,8 @@ export default function Projects({ t }) {
                   )}
 
                   <div className="case-grid">
-                    <div><small>{t.problem}</small><p>{p.problem}</p></div>
-                    <div><small>{t.solution}</small><p>{p.solution}</p></div>
+                    <div><small>{p.caseLabels?.[0] ?? t.problem}</small><p>{p.problem}</p></div>
+                    <div><small>{p.caseLabels?.[1] ?? t.solution}</small><p>{p.solution}</p></div>
                   </div>
                 </div></div>
                 <div className="tags">{p.tags.map((x) => <span key={x}>{x}</span>)}</div>
@@ -80,6 +111,7 @@ export default function Projects({ t }) {
                 <div className="collapse collapse--detail"><div><p className="project-detail" aria-hidden={open !== i}>{p.detail}</p></div></div>
               </div>
             </article>
+            </React.Fragment>
           ))}
 
           <div className="rail-end">
