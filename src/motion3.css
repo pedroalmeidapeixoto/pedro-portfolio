@@ -490,3 +490,14 @@
   transform-origin: left;
   box-shadow: 0 0 12px rgba(94, 234, 212, 0.8);
 }
+
+/* On the pinned rail the card cannot grow past the screen: the open details replace the flow and the problem/solution block. */
+.projects--rail .project-card.is-open .flow,
+.projects--rail .project-card.is-open .case-grid {
+  display: none;
+}
+.projects--rail .project-detail {
+  margin-top: 14px;
+  font-size: 15.5px;
+  line-height: 1.6;
+}

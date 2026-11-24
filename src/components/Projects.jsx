@@ -38,7 +38,7 @@ export default function Projects({ t }) {
           </div>
 
           {t.projects.map((p, i) => (
-            <article className="project-card" key={p.name}>
+            <article className={`project-card${open === i ? ' is-open' : ''}`} key={p.name}>
               <div className="project-index">0{i + 1}</div>
               <div className="project-main">
                 {(() => {
