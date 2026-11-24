@@ -129,7 +129,7 @@ const translations = {
     project_cats: {
       backend: ['Back-end', 'APIs e regras de negócio: o que roda por trás da tela.'],
       frontend: ['Front-end', 'Sites e interfaces feitos para clientes.'],
-      blogs: ['Blogs que administro', 'Portais de notícias que não desenvolvi, mas que eu gerencio.']
+      blogs: ['Portais que mantenho', 'Portais de notícias que não desenvolvi, mas de cuja parte técnica eu cuido.']
     },
     project_one: 'projeto',
     project_many: 'projetos',
@@ -223,32 +223,32 @@ const translations = {
       {
         name: 'Portal do Callado',
         cat: 'blogs',
-        badge: 'Blog · Gestão de conteúdo',
+        badge: 'Portal · Parte técnica',
         desc:
-          'Portal de notícias de Brasília, Goiás e Entorno que eu administro: política, concursos, economia, variedades, blogs e carta do leitor. No ar há 22 anos, segundo o próprio site.',
+          'Portal de notícias de Brasília, Goiás e Entorno, no ar há 22 anos segundo o próprio site.',
         caseLabels: ['Meu papel', 'O portal'],
-        problem: 'Administro o portal e o mantenho atualizado no dia a dia.',
+        problem: 'Cuido da parte técnica do portal. A gestão das publicações não é comigo.',
         solution:
           'Notícias de Brasília, Brasil, Goiás e Entorno, política, concursos, economia, variedades e blogs, em um site WordPress.',
-        tags: ['WordPress', 'Notícias', 'Gestão de conteúdo'],
+        tags: ['WordPress', 'Notícias', 'Parte técnica'],
         live: 'https://portaldocallado.com.br/',
         detail:
-          'Site de notícias em WordPress com as editorias Brasil, Brasília, Goiás & Entorno, Política, Concursos, Economia, Variedades, Blogs, Eleições e Carta do Leitor. Não foi desenvolvido por mim: eu cuido da administração.'
+          'Site de notícias em WordPress com as editorias Brasil, Brasília, Goiás & Entorno, Política, Concursos, Economia, Variedades, Blogs, Eleições e Carta do Leitor. Não foi desenvolvido por mim: eu cuido da parte técnica, não da gestão das publicações.'
       },
       {
         name: 'Infforma',
         cat: 'blogs',
-        badge: 'Blog · Gestão de conteúdo',
+        badge: 'Portal · Parte técnica',
         desc:
-          'Portal de notícias de Brasília e do Brasil que eu administro: política, economia, cidades, cultura, tecnologia e os principais acontecimentos do dia.',
+          'Portal de notícias de Brasília e do Brasil: política, economia, cidades, cultura, tecnologia e os principais acontecimentos do dia.',
         caseLabels: ['Meu papel', 'O portal'],
-        problem: 'Administro o portal e o mantenho atualizado no dia a dia.',
+        problem: 'Cuido da parte técnica do portal. A gestão das publicações não é comigo.',
         solution:
           'Editorias de Brasília, Goiás e Entorno, Política, Opinião, Brasil, Universo Feminino e Variedades, em um site WordPress.',
-        tags: ['WordPress', 'Notícias', 'Gestão de conteúdo'],
+        tags: ['WordPress', 'Notícias', 'Parte técnica'],
         live: 'https://infformadf.com.br/',
         detail:
-          'Site de notícias em WordPress com as editorias Brasília, GO & Entorno, Política, Opinião, Brasil, Universo Feminino e Variedades. Não foi desenvolvido por mim: eu cuido da administração.'
+          'Site de notícias em WordPress com as editorias Brasília, GO & Entorno, Política, Opinião, Brasil, Universo Feminino e Variedades. Não foi desenvolvido por mim: eu cuido da parte técnica, não da gestão das publicações.'
       }
     ],
 
@@ -574,27 +574,27 @@ translations.en = {
     },
     {
       ...translations.pt.projects[4],
-      badge: 'Blog · Content management',
+      badge: 'Portal · Technical side',
       desc:
-        "News portal for Brasília, Goiás and the surrounding area that I administer: politics, public exams, economy, lifestyle, blogs and readers' letters. Online for 22 years, according to the site itself.",
+        'News portal for Brasília, Goiás and the surrounding area, online for 22 years according to the site itself.',
       caseLabels: ['My role', 'The portal'],
-      problem: 'I administer the portal and keep it up to date day to day.',
+      problem: 'I take care of the technical side of the portal. Managing the posts is not my job.',
       solution:
         'News from Brasília, Brazil, Goiás and the surrounding area, politics, public exams, economy, lifestyle and blogs, on a WordPress site.',
       detail:
-        'WordPress news site with the sections Brasil, Brasília, Goiás & Entorno, Política, Concursos, Economia, Variedades, Blogs, Eleições and Carta do Leitor. I did not build it: I handle its administration.'
+        'WordPress news site with the sections Brasil, Brasília, Goiás & Entorno, Política, Concursos, Economia, Variedades, Blogs, Eleições and Carta do Leitor. I did not build it: I take care of the technical side, not of managing the posts.'
     },
     {
       ...translations.pt.projects[5],
-      badge: 'Blog · Content management',
+      badge: 'Portal · Technical side',
       desc:
-        'News portal for Brasília and Brazil that I administer: politics, economy, cities, culture, technology and the main events of the day.',
+        'News portal for Brasília and Brazil: politics, economy, cities, culture, technology and the main events of the day.',
       caseLabels: ['My role', 'The portal'],
-      problem: 'I administer the portal and keep it up to date day to day.',
+      problem: 'I take care of the technical side of the portal. Managing the posts is not my job.',
       solution:
         "Sections for Brasília, Goiás and the surrounding area, Politics, Opinion, Brazil, Women's Universe and Lifestyle, on a WordPress site.",
       detail:
-        'WordPress news site with the sections Brasília, GO & Entorno, Política, Opinião, Brasil, Universo Feminino and Variedades. I did not build it: I handle its administration.'
+        'WordPress news site with the sections Brasília, GO & Entorno, Política, Opinião, Brasil, Universo Feminino and Variedades. I did not build it: I take care of the technical side, not of managing the posts.'
     }
   ],
 
@@ -723,7 +723,7 @@ Object.assign(translations.en, {
   project_cats: {
     backend: ['Back-end', 'APIs and business rules: what runs behind the screen.'],
     frontend: ['Front-end', 'Websites and interfaces built for clients.'],
-    blogs: ['Blogs I administer', 'News portals I did not build, but that I manage.']
+    blogs: ['Portals I maintain', 'News portals I did not build, but whose technical side I take care of.']
   },
   project_one: 'project',
   project_many: 'projects',
