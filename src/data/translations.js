@@ -129,7 +129,7 @@ const translations = {
     project_cats: {
       backend: ['Back-end', 'APIs e regras de negócio: o que roda por trás da tela.'],
       frontend: ['Front-end', 'Sites e interfaces feitos para clientes.'],
-      blogs: ['Portais que mantenho', 'Portais de notícias que não desenvolvi, mas de cuja parte técnica eu cuido.']
+      blogs: ['Portais que mantenho', 'Portais de notícias em WordPress, nos quais atuo na parte técnica.']
     },
     project_one: 'projeto',
     project_many: 'projetos',
@@ -223,34 +223,32 @@ const translations = {
       {
         name: 'Portal do Callado',
         cat: 'blogs',
-        badge: 'Portal · Parte técnica',
+        badge: 'Portal · WordPress',
         desc:
-          'Portal de notícias de Brasília, Goiás e Entorno, no ar há 22 anos segundo o próprio site.',
-        caseLabels: ['Meu papel', 'Por baixo do capô'],
+          'Portal de notícias de Brasília, Goiás e Entorno, no ar há 22 anos segundo o próprio site. Atuo na parte técnica da plataforma; a gestão das publicações não faz parte do meu escopo.',
         problem:
-          'Cuido da parte técnica do portal, a plataforma em que as notícias são publicadas. A gestão das publicações não é comigo.',
+          'Manter uma plataforma de notícias estável, com anúncios, métricas e boa indexação.',
         solution:
-          'WordPress com o tema Newspaper (com tema filho), plugin de anúncios AdRotate, Google Site Kit, dados estruturados, Open Graph, URL canônica e feed RSS.',
-        tags: ['WordPress', 'Tema Newspaper', 'AdRotate', 'Site Kit', 'SEO técnico'],
+          'WordPress com tema Newspaper, anúncios no AdRotate, métricas no Site Kit e SEO técnico (dados estruturados e URL canônica).',
+        tags: ['WordPress', 'Newspaper', 'AdRotate', 'Site Kit', 'SEO técnico', 'RSS'],
         live: 'https://portaldocallado.com.br/',
         detail:
-          'Site de notícias em WordPress 7.1 com o tema Newspaper (tagDiv) e um tema filho, anúncios gerenciados pelo AdRotate e métricas pelo Google Site Kit. Para busca e compartilhamento, tem dados estruturados (JSON-LD), Open Graph, URL canônica e feed RSS, em layout responsivo. As editorias são Brasil, Brasília, Goiás & Entorno, Política, Concursos, Economia, Variedades, Blogs, Eleições e Carta do Leitor. O portal não foi desenvolvido por mim: eu cuido da parte técnica, não da gestão das publicações.'
+          'WordPress 7.1 com o tema Newspaper (tagDiv) e tema filho, anúncios no AdRotate e métricas no Google Site Kit. SEO técnico com JSON-LD, Open Graph, URL canônica e feed RSS, em layout responsivo. Não foi desenvolvido por mim: minha atuação é a parte técnica.'
       },
       {
         name: 'Infforma',
         cat: 'blogs',
-        badge: 'Portal · Parte técnica',
+        badge: 'Portal · WordPress',
         desc:
-          'Portal de notícias de Brasília e do Brasil: política, economia, cidades, cultura, tecnologia e os principais acontecimentos do dia.',
-        caseLabels: ['Meu papel', 'Por baixo do capô'],
+          'Portal de notícias de Brasília e do Brasil, com política, economia, cidades, cultura e tecnologia. Atuo na parte técnica da plataforma; a gestão das publicações não faz parte do meu escopo.',
         problem:
-          'Cuido da parte técnica do portal, a plataforma em que as notícias são publicadas. A gestão das publicações não é comigo.',
+          'Manter uma plataforma de notícias estável, com métricas e boa indexação.',
         solution:
-          'WordPress com o tema Newspaper, Google Site Kit, dados estruturados, Open Graph, URL canônica e feed RSS, em layout responsivo.',
-        tags: ['WordPress', 'Tema Newspaper', 'Site Kit', 'SEO técnico', 'RSS'],
+          'WordPress com tema Newspaper, métricas no Site Kit e SEO técnico (dados estruturados, URL canônica e feed RSS).',
+        tags: ['WordPress', 'Newspaper', 'Site Kit', 'SEO técnico', 'RSS'],
         live: 'https://infformadf.com.br/',
         detail:
-          'Site de notícias em WordPress 7.1 com o tema Newspaper (tagDiv) e métricas pelo Google Site Kit. Para busca e compartilhamento, tem dados estruturados (JSON-LD), Open Graph, URL canônica e feed RSS, em layout responsivo. As editorias são Brasília, GO & Entorno, Política, Opinião, Brasil, Universo Feminino e Variedades. O portal não foi desenvolvido por mim: eu cuido da parte técnica, não da gestão das publicações.'
+          'WordPress 7.1 com o tema Newspaper (tagDiv) e métricas no Google Site Kit. SEO técnico com JSON-LD, Open Graph, URL canônica e feed RSS, em layout responsivo. Não foi desenvolvido por mim: minha atuação é a parte técnica.'
       }
     ],
 
@@ -576,31 +574,29 @@ translations.en = {
     },
     {
       ...translations.pt.projects[4],
-      badge: 'Portal · Technical side',
+      badge: 'Portal · WordPress',
       desc:
-        'News portal for Brasília, Goiás and the surrounding area, online for 22 years according to the site itself.',
-      caseLabels: ['My role', 'Under the hood'],
-      tags: ['WordPress', 'Newspaper theme', 'AdRotate', 'Site Kit', 'Technical SEO'],
+        "News portal for Brasília, Goiás and the surrounding area, online for 22 years according to the site itself. I work on the platform's technical side; managing the posts is outside my scope.",
       problem:
-        'I take care of the technical side of the portal, the platform the news is published on. Managing the posts is not my job.',
+        'Keep a news platform stable, with ads, metrics and good indexing.',
       solution:
-        'WordPress with the Newspaper theme (plus a child theme), the AdRotate ad plugin, Google Site Kit, structured data, Open Graph, canonical URLs and an RSS feed.',
+        'WordPress with the Newspaper theme, ads in AdRotate, metrics in Site Kit and technical SEO (structured data and canonical URLs).',
+      tags: ['WordPress', 'Newspaper', 'AdRotate', 'Site Kit', 'Technical SEO', 'RSS'],
       detail:
-        'WordPress 7.1 news site with the Newspaper theme (tagDiv) and a child theme, ads managed by AdRotate and metrics through Google Site Kit. For search and sharing it has structured data (JSON-LD), Open Graph, canonical URLs and an RSS feed, in a responsive layout. Sections: Brasil, Brasília, Goiás & Entorno, Política, Concursos, Economia, Variedades, Blogs, Eleições and Carta do Leitor. I did not build the portal: I take care of the technical side, not of managing the posts.'
+        'WordPress 7.1 with the Newspaper theme (tagDiv) and a child theme, ads in AdRotate and metrics in Google Site Kit. Technical SEO with JSON-LD, Open Graph, canonical URLs and an RSS feed, in a responsive layout. I did not build it: my work is the technical side.'
     },
     {
       ...translations.pt.projects[5],
-      badge: 'Portal · Technical side',
+      badge: 'Portal · WordPress',
       desc:
-        'News portal for Brasília and Brazil: politics, economy, cities, culture, technology and the main events of the day.',
-      caseLabels: ['My role', 'Under the hood'],
-      tags: ['WordPress', 'Newspaper theme', 'Site Kit', 'Technical SEO', 'RSS'],
+        "News portal for Brasília and Brazil, covering politics, economy, cities, culture and technology. I work on the platform's technical side; managing the posts is outside my scope.",
       problem:
-        'I take care of the technical side of the portal, the platform the news is published on. Managing the posts is not my job.',
+        'Keep a news platform stable, with metrics and good indexing.',
       solution:
-        'WordPress with the Newspaper theme, Google Site Kit, structured data, Open Graph, canonical URLs and an RSS feed, in a responsive layout.',
+        'WordPress with the Newspaper theme, metrics in Site Kit and technical SEO (structured data, canonical URLs and an RSS feed).',
+      tags: ['WordPress', 'Newspaper', 'Site Kit', 'Technical SEO', 'RSS'],
       detail:
-        'WordPress 7.1 news site with the Newspaper theme (tagDiv) and metrics through Google Site Kit. For search and sharing it has structured data (JSON-LD), Open Graph, canonical URLs and an RSS feed, in a responsive layout. Sections: Brasília, GO & Entorno, Política, Opinião, Brasil, Universo Feminino and Variedades. I did not build the portal: I take care of the technical side, not of managing the posts.'
+        'WordPress 7.1 with the Newspaper theme (tagDiv) and metrics in Google Site Kit. Technical SEO with JSON-LD, Open Graph, canonical URLs and an RSS feed, in a responsive layout. I did not build it: my work is the technical side.'
     }
   ],
 
@@ -729,7 +725,7 @@ Object.assign(translations.en, {
   project_cats: {
     backend: ['Back-end', 'APIs and business rules: what runs behind the screen.'],
     frontend: ['Front-end', 'Websites and interfaces built for clients.'],
-    blogs: ['Portals I maintain', 'News portals I did not build, but whose technical side I take care of.']
+    blogs: ['Portals I maintain', 'WordPress news portals where I work on the technical side.']
   },
   project_one: 'project',
   project_many: 'projects',

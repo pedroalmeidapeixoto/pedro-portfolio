@@ -24,6 +24,8 @@ const FLOWS = {
   MedRecord: ['React', 'Express API', 'RBAC · audit', 'PostgreSQL'],
   'Library Management API': ['Controller', 'Service', 'Repository', 'PostgreSQL'],
   GymCore: ['Api', 'Application', 'Domain', 'PostgreSQL'],
+  'Portal do Callado': ['WordPress', 'Newspaper', 'AdRotate', 'Site Kit'],
+  Infforma: ['WordPress', 'Newspaper', 'Site Kit', 'RSS'],
   'Panificadora Sevylha': ['Cardápio', 'Pedido', 'OrderGateway', 'WhatsApp']
 };
 
