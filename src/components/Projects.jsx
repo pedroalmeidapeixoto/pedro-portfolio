@@ -43,8 +43,9 @@ export default function Projects({ t }) {
               <div className="project-main">
                 {(() => {
                   const art = COVERS[p.name] ? <img className={p.name === 'Panificadora Sevylha' ? 'cover-left' : undefined} src={COVERS[p.name]} alt="" loading="lazy" /> : <LibraryCover />;
-                  return p.url
-                    ? <a className="project-cover" href={p.url} target="_blank" rel="noreferrer" tabIndex={-1} aria-hidden="true">{art}</a>
+                  const href = p.live || p.url;
+                  return href
+                    ? <a className="project-cover" href={href} target="_blank" rel="noreferrer" tabIndex={-1} aria-hidden="true">{art}</a>
                     : <div className="project-cover" aria-hidden="true">{art}</div>;
                 })()}
                 <div className="project-top">
@@ -52,26 +53,31 @@ export default function Projects({ t }) {
                     <span className="project-badge">{p.badge}</span>
                     <h3>{p.name}</h3>
                   </div>
-                  {p.url && <a className="project-arrow" href={p.url} target="_blank" rel="noreferrer" aria-label={t.project_open}>↗</a>}
+                  {(p.live || p.url) && <a className="project-arrow" href={p.live || p.url} target="_blank" rel="noreferrer" aria-label={p.live ? t.project_live : t.project_open}>↗</a>}
                 </div>
                 <p className="project-desc">{p.desc}</p>
 
-                {FLOWS[p.name] && (
-                  <div className="flow" aria-hidden="true">
-                    {FLOWS[p.name].map((name) => <span key={name}>{name}</span>)}
-                    <i className="flow__packet" />
-                  </div>
-                )}
+                <div className="collapse collapse--main"><div>
+                  {FLOWS[p.name] && (
+                    <div className="flow" aria-hidden="true">
+                      {FLOWS[p.name].map((name) => <span key={name}>{name}</span>)}
+                      <i className="flow__packet" />
+                    </div>
+                  )}
 
-                <div className="case-grid">
-                  <div><small>{t.problem}</small><p>{p.problem}</p></div>
-                  <div><small>{t.solution}</small><p>{p.solution}</p></div>
-                </div>
+                  <div className="case-grid">
+                    <div><small>{t.problem}</small><p>{p.problem}</p></div>
+                    <div><small>{t.solution}</small><p>{p.solution}</p></div>
+                  </div>
+                </div></div>
                 <div className="tags">{p.tags.map((x) => <span key={x}>{x}</span>)}</div>
-                <button className="details-btn" onClick={() => setOpen(open === i ? null : i)}>
-                  {open === i ? t.project_hide : t.project_details}<span className={open === i ? 'rot' : ''}>↓</span>
-                </button>
-                {open === i && <p className="project-detail">{p.detail}</p>}
+                <div className="project-actions">
+                  <button className="details-btn" onClick={() => setOpen(open === i ? null : i)}>
+                    {open === i ? t.project_hide : t.project_details}<span className={open === i ? 'rot' : ''}>↓</span>
+                  </button>
+                  {p.live && <a className="project-live" href={p.live} target="_blank" rel="noreferrer">{t.project_live}</a>}
+                </div>
+                <div className="collapse collapse--detail"><div><p className="project-detail" aria-hidden={open !== i}>{p.detail}</p></div></div>
               </div>
             </article>
           ))}

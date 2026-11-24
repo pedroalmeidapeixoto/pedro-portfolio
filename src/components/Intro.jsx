@@ -49,7 +49,6 @@ export default function Intro({ onDone }) {
         <p className="intro__name">
           pedro<span>.dev</span>
         </p>
-        <p className="intro__role">Backend developer · C# / .NET</p>
         <ul className="intro__log">
           {LINES.map((line, index) => <li key={line} style={{ '--i': index }}>{line}</li>)}
         </ul>

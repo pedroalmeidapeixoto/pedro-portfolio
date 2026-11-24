@@ -133,6 +133,7 @@ const translations = {
 
     github_cta: 'Ver GitHub ↗',
     project_open: 'Abrir repositório ↗',
+    project_live: 'Abrir o site ↗',
     project_details: 'Ver detalhes',
     project_hide: 'Ocultar detalhes',
 
@@ -189,6 +190,8 @@ const translations = {
         solution:
           'Cardápio com filtros, gaveta de pedido, montador de ceia e checkout que gera a mensagem do WhatsApp, atrás de uma interface pronta para virar API.',
         tags: ['React 19', 'TypeScript', 'Vite', 'Vitest', 'Lenis', 'WhatsApp'],
+        // live: the deployed site (the repository is private, so there is no repo link)
+        live: 'https://panificadora-sevylha-site.vercel.app/',
         detail:
           'Landing page responsiva em pt-BR com selo de aberto/fechado pelos horários reais, pedido salvo no navegador e montador de ceia para 6 ou 10 pessoas. O envio passa por uma interface OrderGateway (WhatsApp hoje, API depois), a lógica de pedido tem testes unitários e a página tem transições entre seções, rolagem suave e fallback para movimento reduzido.'
       }
@@ -461,6 +464,7 @@ translations.en = {
 
   github_cta: 'View GitHub ↗',
   project_open: 'Open repository ↗',
+  project_live: 'Open the website ↗',
   project_details: 'View details',
   project_hide: 'Hide details',
 
